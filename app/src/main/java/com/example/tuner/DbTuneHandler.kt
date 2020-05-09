@@ -9,34 +9,28 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
 
 
-class DbInstrumentHandler(var context: Context) :
+class DbTuneHandler(var context: Context) :
     SQLiteOpenHelper(context, Companion.DATABASE_NAME, null, 1) {
-
-    fun drop() {
-        //uncomment it to remove database.
-        // it will produce error with migration after call you need to comment it and run application again so new db will be created
-        //     context.deleteDatabase(DATABASE_NAME)
+    override fun onCreate(db: SQLiteDatabase?) {
+        val createTable = "CREATE TABLE IF NOT EXISTS  " + Companion.TABLE_NAME + " (" +
+                Companion.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                Companion.COL_NAME + " VARCHAR(255)" +
+                Companion.COL_EXACT_FREQUENCY + " FLOAT" +
+                ")"
+        db?.execSQL(createTable)
     }
     fun create() {
         onCreate(this.writableDatabase)
     }
-
-    override fun onCreate(db: SQLiteDatabase?) {
-        val createTable = "CREATE TABLE IF NOT EXISTS " + Companion.TABLE_NAME + " (" +
-                Companion.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                Companion.COL_NAME + " VARCHAR(255))"
-        db?.execSQL(createTable)
-    }
-
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         TODO("Not yet implemented")
     }
 
-    fun insertData(instrumentModel: InstrumentModel) {
+    fun insertData(tuneModel: TuneModel) {
         val db = this.writableDatabase
         val cv = ContentValues()
-        cv.put(Companion.COL_ID, instrumentModel.id)
-        cv.put(Companion.COL_NAME, instrumentModel.name)
+        cv.put(Companion.COL_ID, tuneModel.id)
+        cv.put(Companion.COL_NAME, tuneModel.name)
         val result = db.insert(Companion.TABLE_NAME, null, cv)
         if (result == (-1).toLong()) {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
@@ -45,8 +39,8 @@ class DbInstrumentHandler(var context: Context) :
         }
     }
 
-    fun getAll(): ArrayList<InstrumentModel> {
-        val instruments = ArrayList<InstrumentModel>()
+    fun getAll(): ArrayList<TuneModel> {
+        val tunes = ArrayList<TuneModel>()
 
         val db = this.writableDatabase
         var cursor: Cursor? = null
@@ -57,23 +51,28 @@ class DbInstrumentHandler(var context: Context) :
 
         var id: Int
         var name: String
+        var exactFrequency: Double
         if (cursor!!.moveToFirst()) {
             while (!cursor.isAfterLast) {
                 id = cursor.getString(cursor.getColumnIndex(Companion.COL_ID)).toInt()
                 name = cursor.getString(cursor.getColumnIndex(Companion.COL_NAME))
+                exactFrequency =
+                    cursor.getString(cursor.getColumnIndex(Companion.COL_EXACT_FREQUENCY)).toDouble()
 
-                instruments.add(InstrumentModel(id, name))
+                tunes.add(TuneModel(id, name, exactFrequency))
                 cursor.moveToNext()
             }
         }
 
-        return instruments
+        return tunes
     }
 
     companion object {
         const val DATABASE_NAME = "tuner"
-        const val TABLE_NAME = "Instrument"
+        const val TABLE_NAME = "Tune"
         const val COL_ID = "id"
         const val COL_NAME = "name"
+        const val COL_FREQUENCY_TO = "frequency_to"
+        const val COL_EXACT_FREQUENCY = "exact_frequency"
     }
 }

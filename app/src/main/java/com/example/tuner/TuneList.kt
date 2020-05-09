@@ -20,12 +20,13 @@ class TuneList : AppCompatActivity() {
 
         var option = findViewById<Spinner>(R.id.select_tune)
 
-        option.adapter = ArrayAdapter<InstrumentModel>(
+        val instruments = DbInstrumentHandler(this).getAll()
+        option.adapter = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
-            DbInstrumentHandler(this).getAll()
+            instruments
         )
-
+        val context = this
         option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
@@ -37,11 +38,17 @@ class TuneList : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                println( option.selectedItem)
+                var selectedId: Int? = null
+                for (instrument in instruments) {
+                    if (option.selectedItem.toString() == instrument.name) {
+                        selectedId = instrument.id
+                    }
+                }
 
+                if (selectedId !== null) {
+                    DbBasicTunerHandler(context).getByInstrumentId(selectedId)
+                }
             }
         }
     }
-
-
 }
