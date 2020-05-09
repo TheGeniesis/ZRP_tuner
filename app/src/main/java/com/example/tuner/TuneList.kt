@@ -1,0 +1,12 @@
+package com.example.tuner
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+
+class TuneList : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_tune_list)
+    }
+}
