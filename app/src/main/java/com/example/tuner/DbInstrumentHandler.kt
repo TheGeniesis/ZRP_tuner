@@ -42,7 +42,6 @@ class DbInstrumentHandler(var context: Context) :
         cv.put(Companion.COL_ID, instrumentModel.id)
         cv.put(Companion.COL_NAME, instrumentModel.name)
         val result = db.insert(Companion.TABLE_NAME, null, cv)
-        println("wchod")
         if (result == (-1).toLong()) {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
         } else {

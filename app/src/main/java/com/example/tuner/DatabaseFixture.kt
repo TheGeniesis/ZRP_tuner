@@ -43,7 +43,6 @@ class DatabaseFixture
                 if (letter !== "B" && letter !== "E") {
                     note = "$letter#$currNumber"
                     tune = TuneModel(++iterator, note, frequencies[iterator-1])
-                    println(tune)
                     handlerTune.insertData(tune)
                 }
             }
