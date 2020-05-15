@@ -7,13 +7,17 @@
     tools:context=".TuneList">
 
     <include
-        layout="@layout/activity_title_bar"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <include
         android:id="@+id/select_tune"
         layout="@layout/activity_select_element"
         />
 
+    <include
+        layout="@layout/activity_title_bar"
+        />
+
+    <ListView
+        android:id="@+id/tune_list"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="150dp" />
 </RelativeLayout>

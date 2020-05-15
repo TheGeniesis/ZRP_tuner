@@ -76,16 +76,24 @@ class DbBasicTunerHandler(var context: Context) :
         return cursor?.let { getResult(it) }
     }
 
-    fun getByInstrumentId(id: Int): BasicTunerModel? {
+    fun getByInstrumentId(id: Int):  ArrayList<BasicTunerModel> {
 
         val db = this.readableDatabase
         var cursor: Cursor? = null
         try {
-            cursor = db.rawQuery("SELECT * FROM ${Companion.TABLE_NAME} WHERE instrument_id IN (?)", arrayOf<String>(id.toString()))
+            cursor = db.rawQuery(
+                "SELECT * FROM ${Companion.TABLE_NAME} " +
+                    "WHERE instrument_id IN (?)", arrayOf<String>(id.toString()))
         } catch (e: SQLiteException) {
         }
 
-        return cursor?.let { getResult(it)[0] }
+        val result =cursor?.let { getResult(it) }
+
+        if (result !== null) {
+            return result;
+        }
+
+        return ArrayList()
     }
 
     private fun getResult(cursor: Cursor): ArrayList<BasicTunerModel> {
