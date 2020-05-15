@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import androidx.core.database.getIntOrNull
 
 
 class DbBasicTunerHandler(var context: Context) :
@@ -18,17 +19,17 @@ class DbBasicTunerHandler(var context: Context) :
     override fun onCreate(db: SQLiteDatabase?) {
         val createTable = "CREATE TABLE IF NOT EXISTS  " + Companion.TABLE_NAME + " (" +
                 Companion.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                Companion.COL_NAME + " VARCHAR(255)" +
-                Companion.COL_INSTRUMENT_ID + " INT(9)" +
-                Companion.COL_TUNE_1 + " INT(9)" +
-                Companion.COL_TUNE_2 + " INT(9)" +
-                Companion.COL_TUNE_3 + " INT(9)" +
-                Companion.COL_TUNE_4 + " INT(9)" +
-                Companion.COL_TUNE_5 + " INT(9)" +
-                Companion.COL_TUNE_6 + " INT(9)" +
-                Companion.COL_TUNE_7 + " INT(9)" +
-                Companion.COL_TUNE_8 + " INT(9)" +
-                Companion.COL_TUNE_9 + " INT(9)" +
+                Companion.COL_NAME + " VARCHAR(255)," +
+                Companion.COL_INSTRUMENT_ID + " INT(9)," +
+                Companion.COL_TUNE_1 + " INT(9)," +
+                Companion.COL_TUNE_2 + " INT(9)," +
+                Companion.COL_TUNE_3 + " INT(9)," +
+                Companion.COL_TUNE_4 + " INT(9)," +
+                Companion.COL_TUNE_5 + " INT(9)," +
+                Companion.COL_TUNE_6 + " INT(9)," +
+                Companion.COL_TUNE_7 + " INT(9)," +
+                Companion.COL_TUNE_8 + " INT(9)," +
+                Companion.COL_TUNE_9 + " INT(9)," +
                 Companion.COL_TUNE_10 + " INT(9)" +
                 ")"
         db?.execSQL(createTable)
@@ -61,6 +62,7 @@ class DbBasicTunerHandler(var context: Context) :
         } else {
             Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
         }
+        db.close()
     }
 
     fun getAll(): ArrayList<BasicTunerModel>? {
@@ -104,21 +106,21 @@ class DbBasicTunerHandler(var context: Context) :
         var tune10: Int?
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast) {
-                id = cursor.getString(cursor.getColumnIndex(Companion.COL_ID)).toInt()
+                id = cursor.getInt(cursor.getColumnIndex(Companion.COL_ID))
                 name = cursor.getString(cursor.getColumnIndex(Companion.COL_NAME))
                 instrumentId =
-                    cursor.getString(cursor.getColumnIndex(Companion.COL_INSTRUMENT_ID)).toInt()
-                tune1 = cursor.getString(cursor.getColumnIndex(Companion.COL_TUNE_1)).toIntOrNull()
-                tune2 = cursor.getString(cursor.getColumnIndex(Companion.COL_TUNE_2)).toIntOrNull()
-                tune3 = cursor.getString(cursor.getColumnIndex(Companion.COL_TUNE_3)).toIntOrNull()
-                tune4 = cursor.getString(cursor.getColumnIndex(Companion.COL_TUNE_4)).toIntOrNull()
-                tune5 = cursor.getString(cursor.getColumnIndex(Companion.COL_TUNE_5)).toIntOrNull()
-                tune6 = cursor.getString(cursor.getColumnIndex(Companion.COL_TUNE_6)).toIntOrNull()
-                tune7 = cursor.getString(cursor.getColumnIndex(Companion.COL_TUNE_7)).toIntOrNull()
-                tune8 = cursor.getString(cursor.getColumnIndex(Companion.COL_TUNE_8)).toIntOrNull()
-                tune9 = cursor.getString(cursor.getColumnIndex(Companion.COL_TUNE_9)).toIntOrNull()
+                    cursor.getInt(cursor.getColumnIndex(Companion.COL_INSTRUMENT_ID))
+                tune1 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_1))
+                tune2 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_2))
+                tune3 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_3))
+                tune4 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_4))
+                tune5 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_5))
+                tune6 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_6))
+                tune7 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_7))
+                tune8 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_8))
+                tune9 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_9))
                 tune10 =
-                    cursor.getString(cursor.getColumnIndex(Companion.COL_TUNE_10)).toIntOrNull()
+                    cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_10))
 
                 basicTuners.add(
                     BasicTunerModel(

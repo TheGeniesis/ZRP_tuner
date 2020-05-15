@@ -14,7 +14,7 @@ class DbTuneHandler(var context: Context) :
     override fun onCreate(db: SQLiteDatabase?) {
         val createTable = "CREATE TABLE IF NOT EXISTS  " + Companion.TABLE_NAME + " (" +
                 Companion.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                Companion.COL_NAME + " VARCHAR(255)" +
+                Companion.COL_NAME + " VARCHAR(255)," +
                 Companion.COL_EXACT_FREQUENCY + " FLOAT" +
                 ")"
         db?.execSQL(createTable)
@@ -37,6 +37,7 @@ class DbTuneHandler(var context: Context) :
         } else {
             Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
         }
+        db.close()
     }
 
     fun getAll(): ArrayList<TuneModel> {
@@ -54,10 +55,10 @@ class DbTuneHandler(var context: Context) :
         var exactFrequency: Double
         if (cursor!!.moveToFirst()) {
             while (!cursor.isAfterLast) {
-                id = cursor.getString(cursor.getColumnIndex(Companion.COL_ID)).toInt()
+                id = cursor.getInt(cursor.getColumnIndex(Companion.COL_ID))
                 name = cursor.getString(cursor.getColumnIndex(Companion.COL_NAME))
                 exactFrequency =
-                    cursor.getString(cursor.getColumnIndex(Companion.COL_EXACT_FREQUENCY)).toDouble()
+                    cursor.getDouble(cursor.getColumnIndex(Companion.COL_EXACT_FREQUENCY))
 
                 tunes.add(TuneModel(id, name, exactFrequency))
                 cursor.moveToNext()

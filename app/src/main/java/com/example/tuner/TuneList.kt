@@ -29,7 +29,7 @@ class TuneList : AppCompatActivity() {
         val context = this
         option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
-
+                option.setSelection(instruments.first().id)
             }
 
             override fun onItemSelected(
