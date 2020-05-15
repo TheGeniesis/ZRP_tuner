@@ -6,10 +6,10 @@ import kotlin.system.exitProcess
 class DatabaseFixture
 {
     fun createBasicDataInDB(context: Context) {
-        DbInstrumentHandler(context).drop()
-//        if (DbInstrumentHandler(context).getAll().isNotEmpty()) {
-//            return
-//        }
+//        DbInstrumentHandler(context).drop()
+        if (DbInstrumentHandler(context).getAll().isNotEmpty()) {
+            return
+        }
 //        Create data in Instrument table
         var instrument = InstrumentModel(1, InstrumentEnum.GUITAR);
         val handler = DbInstrumentHandler(context)
@@ -53,16 +53,16 @@ class DatabaseFixture
         val handler2 = DbBasicTunerHandler(context)
         handler2.create()
 
-        var basicTuner = BasicTunerModel(1, "E-standard", 1, TuneEnum.E2, TuneEnum.A2,TuneEnum.D3,TuneEnum.G3,TuneEnum.B3,TuneEnum.E4, null, null, null, null);
+        var basicTuner = BasicTunerModel(1, "E-standard", 1, 10, TuneEnum.E2, TuneEnum.A2,TuneEnum.D3,TuneEnum.G3,TuneEnum.B3,TuneEnum.E4, null, null, null, null);
         handler2.insertData(basicTuner)
 
-        basicTuner = BasicTunerModel(2, "Drop D", 1, TuneEnum.D2, TuneEnum.A2,TuneEnum.D3,TuneEnum.G3,TuneEnum.B3,TuneEnum.E4, null, null, null, null);
+        basicTuner = BasicTunerModel(2, "Drop D", 1, 9, TuneEnum.D2, TuneEnum.A2,TuneEnum.D3,TuneEnum.G3,TuneEnum.B3,TuneEnum.E4, null, null, null, null);
         handler2.insertData(basicTuner)
 
-        basicTuner = BasicTunerModel(3, "4-string standard", 2, TuneEnum.E1, TuneEnum.A1,TuneEnum.D1,TuneEnum.G2,null, null, null, null, null, null);
+        basicTuner = BasicTunerModel(3, "4-string standard", 8, 2, TuneEnum.E1, TuneEnum.A1,TuneEnum.D1,TuneEnum.G2,null, null, null, null, null, null);
         handler2.insertData(basicTuner)
 
-        basicTuner = BasicTunerModel(4, "Drop D 4-string", 2, TuneEnum.D1, TuneEnum.A1,TuneEnum.D1,TuneEnum.G2, null, null, null, null, null, null);
+        basicTuner = BasicTunerModel(4, "Drop D 4-string", 7, 2, TuneEnum.D1, TuneEnum.A1,TuneEnum.D1,TuneEnum.G2, null, null, null, null, null, null);
         handler2.insertData(basicTuner)
     }
 }

@@ -81,8 +81,8 @@ class TuneList : AppCompatActivity() {
             )
 
             tuningOption.setOnItemClickListener { _, _, position, _ ->
-                // @todo save choose somewhere
                 val selectedRecipe = tuningList[position]
+                DbBasicTunerHandler(context).setHighestOrder(selectedRecipe.id)
 
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
