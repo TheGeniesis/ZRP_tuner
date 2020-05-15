@@ -1,14 +1,17 @@
 package com.example.tuner
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.Spinner
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_title_bar.*
 
 class TuneList : AppCompatActivity() {
-
-    lateinit var option: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,41 +39,53 @@ class TuneList : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                var selectedId: Int? = null
-                for (instrument in instruments) {
-                    if (option.selectedItem.toString() == instrument.name) {
-                        selectedId = instrument.id
-                    }
-                }
-                val tuneResult  = DbTuneHandler(context).getAll()
-                if (selectedId !== null) {
-                    val tuningList = DbBasicTunerHandler(context).getByInstrumentId(selectedId)
-                    val tuningOptionList : ArrayList<TunerListView> = ArrayList(tuningList.size)
-                    for (tuning in tuningList) {
-                        tuningOptionList.add(
-                            TunerListView(
-                                tuning.name,
-                                if(tuning.tune1 !== null) tuneResult.find { it.id == tuning.tune1 }!!.name else null,
-                                if(tuning.tune2 !== null) tuneResult.find { it.id == tuning.tune2 }!!.name else null,
-                                if(tuning.tune3 !== null) tuneResult.find { it.id == tuning.tune3 }!!.name else null,
-                                if(tuning.tune4 !== null) tuneResult.find { it.id == tuning.tune4 }!!.name else null,
-                                if(tuning.tune5 !== null) tuneResult.find { it.id == tuning.tune5 }!!.name else null,
-                                if(tuning.tune6 !== null) tuneResult.find { it.id == tuning.tune6 }!!.name else null,
-                                if(tuning.tune7 !== null) tuneResult.find { it.id == tuning.tune7 }!!.name else null,
-                                if(tuning.tune8 !== null) tuneResult.find { it.id == tuning.tune8 }!!.name else null,
-                                if(tuning.tune9 !== null) tuneResult.find { it.id == tuning.tune9 }!!.name else null,
-                                if(tuning.tune10 !== null) tuneResult.find { it.id == tuning.tune10 }!!.name else null
-                            )
-                        )
-                    }
+                showListForInstrument(context, instruments, option)
+            }
+        }
+    }
 
-                    val tuningOption = findViewById<ListView>(R.id.tune_list)
-
-                    tuningOption.adapter = TuneListElementAdapter(
-                        context,
-                        tuningOptionList
+    private fun showListForInstrument(context: Context, instruments:  ArrayList<InstrumentModel>, option: Spinner ) {
+        var selectedId: Int? = null
+        for (instrument in instruments) {
+            if (option.selectedItem.toString() == instrument.name) {
+                selectedId = instrument.id
+            }
+        }
+        val tuneResult = DbTuneHandler(context).getAll()
+        if (selectedId !== null) {
+            val tuningList = DbBasicTunerHandler(context).getByInstrumentId(selectedId)
+            val tuningOptionList: ArrayList<TunerListView> = ArrayList(tuningList.size)
+            for (tuning in tuningList) {
+                tuningOptionList.add(
+                    TunerListView(
+                        tuning.name,
+                        if (tuning.tune1 !== null) tuneResult.find { it.id == tuning.tune1 }!!.name else null,
+                        if (tuning.tune2 !== null) tuneResult.find { it.id == tuning.tune2 }!!.name else null,
+                        if (tuning.tune3 !== null) tuneResult.find { it.id == tuning.tune3 }!!.name else null,
+                        if (tuning.tune4 !== null) tuneResult.find { it.id == tuning.tune4 }!!.name else null,
+                        if (tuning.tune5 !== null) tuneResult.find { it.id == tuning.tune5 }!!.name else null,
+                        if (tuning.tune6 !== null) tuneResult.find { it.id == tuning.tune6 }!!.name else null,
+                        if (tuning.tune7 !== null) tuneResult.find { it.id == tuning.tune7 }!!.name else null,
+                        if (tuning.tune8 !== null) tuneResult.find { it.id == tuning.tune8 }!!.name else null,
+                        if (tuning.tune9 !== null) tuneResult.find { it.id == tuning.tune9 }!!.name else null,
+                        if (tuning.tune10 !== null) tuneResult.find { it.id == tuning.tune10 }!!.name else null
                     )
-                }
+                )
+            }
+
+            val tuningOption = findViewById<ListView>(R.id.tune_list)
+
+            tuningOption.adapter = TuneListElementAdapter(
+                context,
+                tuningOptionList
+            )
+
+            tuningOption.setOnItemClickListener { _, _, position, _ ->
+                // @todo save choose somewhere
+                val selectedRecipe = tuningList[position]
+
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
         }
     }

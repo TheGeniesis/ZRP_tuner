@@ -10,11 +10,10 @@
         layout="@layout/activity_title_bar"
         />
 
+
     <include
         android:id="@+id/select_tune"
-        layout="@layout/activity_select_element"
-        />
-
+        layout="@layout/activity_select_element" />
 
     <ListView
         android:id="@+id/tune_list"
