@@ -7,13 +7,14 @@
     tools:context=".TuneList">
 
     <include
+        layout="@layout/activity_title_bar"
+        />
+
+    <include
         android:id="@+id/select_tune"
         layout="@layout/activity_select_element"
         />
 
-    <include
-        layout="@layout/activity_title_bar"
-        />
 
     <ListView
         android:id="@+id/tune_list"
