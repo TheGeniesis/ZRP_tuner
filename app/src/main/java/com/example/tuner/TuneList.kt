@@ -4,11 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.Spinner
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_title_bar.*
 
 class TuneList : AppCompatActivity() {
@@ -19,6 +17,21 @@ class TuneList : AppCompatActivity() {
 
         title_bar.text = "Tunes";
 
+        prepareAndHandleList(this)
+        prepareAndHandleAddNewTuning(this)
+    }
+
+    private fun prepareAndHandleAddNewTuning(context: Context)
+    {
+        var button = findViewById<Button>(R.id.add_new_tuning)
+        button.setOnClickListener {
+            val intent = Intent(this, AddEditActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun prepareAndHandleList(context: Context)
+    {
         var option = findViewById<Spinner>(R.id.select_tune)
 
         val instruments = DbInstrumentHandler(this).getAll()
@@ -27,7 +40,6 @@ class TuneList : AppCompatActivity() {
             android.R.layout.simple_list_item_1,
             instruments
         )
-        val context = this
         option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 option.setSelection(instruments.first().id)

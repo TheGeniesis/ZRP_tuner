@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddEditActivity">
+
+    <TextView
+        android:id="@+id/instrument_id_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+
+        android:layout_marginLeft="161dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginStart="161dp" />
+
+    <EditText
+        android:id="@+id/tuning_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter tuning name"
+        android:inputType="textShortMessage"
+        android:layout_marginLeft="61dp"
+        android:layout_marginTop="74dp"
+        android:autofillHints=""
+        android:layout_marginStart="61dp" />
+
+    <TextView
+        android:id="@+id/tuning_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tuning name"
+        android:layout_marginLeft="129dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginStart="129dp" />
+
+    <Button
+        android:id="@+id/save_changes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:layout_marginLeft="186dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginStart="186dp" />
+
+    <Button
+        android:id="@+id/add_node_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_marginLeft="274dp"
+        android:layout_marginTop="380dp"
+        android:layout_marginStart="274dp" />
+
+    <Spinner
+        android:id="@+id/add_note_spinner"
+        android:layout_width="191dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="372dp"
+        android:layout_marginStart="27dp" />
+
+    <ListView
+        android:id="@+id/selected_tunings_list"
+        android:layout_width="409dp"
+        android:layout_height="135dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="206dp"
+        android:layout_marginStart="16dp" />
+
+    <Button
+        android:id="@+id/go_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go back"
+        android:layout_marginLeft="41dp"
+        android:layout_marginTop="437dp"
+        android:layout_marginStart="41dp" />
+
+    <Spinner
+        android:id="@+id/instrument_id"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginStart="1dp" />
+</RelativeLayout>

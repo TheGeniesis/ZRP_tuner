@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import android.widget.Toast
 import androidx.core.database.getIntOrNull
-import kotlin.system.exitProcess
 
 
 class DbBasicTunerHandler(var context: Context) :
@@ -48,7 +47,7 @@ class DbBasicTunerHandler(var context: Context) :
         TODO("Not yet implemented")
     }
 
-    fun insertData(basicTunerModel: BasicTunerModel) {
+    fun insertData(basicTunerModel: BasicTunerModel): Long {
         val db = this.writableDatabase
         val cv = ContentValues()
         cv.put(Companion.COL_ID, basicTunerModel.id)
@@ -74,6 +73,8 @@ class DbBasicTunerHandler(var context: Context) :
             Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
         }
         db.close()
+
+        return result
     }
 
     fun setTheHighestOrder(id: Int) {

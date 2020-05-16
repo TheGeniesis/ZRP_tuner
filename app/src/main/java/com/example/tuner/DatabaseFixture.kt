@@ -1,7 +1,6 @@
 package com.example.tuner
 
 import android.content.Context
-import kotlin.system.exitProcess
 
 class DatabaseFixture
 {
@@ -34,7 +33,6 @@ class DatabaseFixture
 
         while (currNumber < 9) {
             for (letter in letters) {
-
                 note = "$letter$currNumber"
                 tune = TuneModel(++iterator, note, frequencies[iterator-1])
 

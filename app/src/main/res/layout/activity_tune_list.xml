@@ -20,4 +20,14 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginTop="150dp" />
+
+    <Button
+        android:id="@+id/add_new_tuning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="350dp"
+        android:text="addd +" />
+
 </RelativeLayout>
