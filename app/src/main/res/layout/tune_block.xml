@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tune_block_tune_1"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:id="@+id/tune_block_tune_2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_toEndOf="@id/tune_block_tune_1"
+        android:layout_toRightOf="@id/tune_block_tune_1" />
+    <TextView
+        android:id="@+id/tune_block_tune_3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_toEndOf="@id/tune_block_tune_2"
+        android:layout_toRightOf="@id/tune_block_tune_2" />
+
+    <TextView
+        android:id="@+id/tune_block_tune_4"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/tune_block_tune_3"
+        android:layout_toRightOf="@id/tune_block_tune_3" />
+
+    <TextView
+        android:id="@+id/tune_block_tune_5"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_toEndOf="@id/tune_block_tune_4"
+        android:layout_toRightOf="@id/tune_block_tune_4" />
+
+    <TextView
+        android:id="@+id/tune_block_tune_6"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_toEndOf="@id/tune_block_tune_5"
+        android:layout_toRightOf="@id/tune_block_tune_5" />
+
+    <TextView
+        android:id="@+id/tune_block_tune_7"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_toEndOf="@id/tune_block_tune_6"
+        android:layout_toRightOf="@id/tune_block_tune_6" />
+
+    <TextView
+        android:id="@+id/tune_block_tune_8"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_toEndOf="@id/tune_block_tune_7"
+        android:layout_toRightOf="@id/tune_block_tune_7" />
+
+    <TextView
+        android:id="@+id/tune_block_tune_9"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_toEndOf="@id/tune_block_tune_8"
+        android:layout_toRightOf="@id/tune_block_tune_8" />
+
+    <TextView
+        android:id="@+id/tune_block_tune_10"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_toEndOf="@id/tune_block_tune_9"
+        android:layout_toRightOf="@id/tune_block_tune_9" />
+</RelativeLayout>

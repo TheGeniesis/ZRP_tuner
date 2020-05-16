@@ -59,10 +59,10 @@ class DatabaseFixture
         basicTuner = BasicTunerModel(2, "Drop D", 1, 9, TuneEnum.D2, TuneEnum.A2,TuneEnum.D3,TuneEnum.G3,TuneEnum.B3,TuneEnum.E4, null, null, null, null);
         handler2.insertData(basicTuner)
 
-        basicTuner = BasicTunerModel(3, "4-string standard", 8, 2, TuneEnum.E1, TuneEnum.A1,TuneEnum.D1,TuneEnum.G2,null, null, null, null, null, null);
+        basicTuner = BasicTunerModel(3, "4-string standard", 2, 8, TuneEnum.E1, TuneEnum.A1,TuneEnum.D1,TuneEnum.G2,null, null, null, null, null, null);
         handler2.insertData(basicTuner)
 
-        basicTuner = BasicTunerModel(4, "Drop D 4-string", 7, 2, TuneEnum.D1, TuneEnum.A1,TuneEnum.D1,TuneEnum.G2, null, null, null, null, null, null);
+        basicTuner = BasicTunerModel(4, "Drop D 4-string", 2, 7, TuneEnum.D1, TuneEnum.A1,TuneEnum.D1,TuneEnum.G2, null, null, null, null, null, null);
         handler2.insertData(basicTuner)
     }
 }

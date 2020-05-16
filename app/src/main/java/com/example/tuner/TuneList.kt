@@ -82,7 +82,7 @@ class TuneList : AppCompatActivity() {
 
             tuningOption.setOnItemClickListener { _, _, position, _ ->
                 val selectedRecipe = tuningList[position]
-                DbBasicTunerHandler(context).setHighestOrder(selectedRecipe.id)
+                DbBasicTunerHandler(context).setTheHighestOrder(selectedRecipe.id)
 
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)

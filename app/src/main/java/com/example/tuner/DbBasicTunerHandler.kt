@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import android.widget.Toast
 import androidx.core.database.getIntOrNull
+import kotlin.system.exitProcess
 
 
 class DbBasicTunerHandler(var context: Context) :
@@ -73,7 +74,7 @@ class DbBasicTunerHandler(var context: Context) :
         db.close()
     }
 
-    fun setHighestOrder(id: Int) {
+    fun setTheHighestOrder(id: Int) {
         val db = this.writableDatabase
         try {
             db.execSQL(
@@ -94,6 +95,26 @@ class DbBasicTunerHandler(var context: Context) :
         db.close()
     }
 
+    fun getCurrentTuning() : BasicTunerModel?
+    {
+        val db = this.readableDatabase
+        var cursor: Cursor? = null
+        try {
+            cursor = db.rawQuery("SELECT * FROM ${Companion.TABLE_NAME} WHERE custom_order = (" +
+                    "SELECT MAX(custom_order) as co " +
+                        " FROM ${Companion.TABLE_NAME} " +
+                        " ORDER BY co DESC " +
+                        " LIMIT 1" +
+                    ") ",
+                null
+            )
+        } catch (e: SQLiteException) {
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+        }
+
+        return cursor?.let { getResult(it).first() }
+    }
+
     fun getAll(): ArrayList<BasicTunerModel>? {
         val db = this.readableDatabase
         var cursor: Cursor? = null
@@ -102,7 +123,6 @@ class DbBasicTunerHandler(var context: Context) :
         } catch (e: SQLiteException) {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
         }
-        db.close()
 
         return cursor?.let { getResult(it) }
     }
@@ -124,11 +144,11 @@ class DbBasicTunerHandler(var context: Context) :
 
         val result = cursor?.let { getResult(it) }
 
+        db.close()
         if (result !== null) {
             return result;
         }
 
-        db.close()
         return ArrayList()
     }
 
@@ -149,6 +169,7 @@ class DbBasicTunerHandler(var context: Context) :
         var tune8: Int?
         var tune9: Int?
         var tune10: Int?
+
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast) {
                 id = cursor.getInt(cursor.getColumnIndex(Companion.COL_ID))
@@ -186,6 +207,7 @@ class DbBasicTunerHandler(var context: Context) :
                         tune10
                     )
                 )
+
                 cursor.moveToNext()
             }
         }
@@ -214,7 +236,7 @@ class DbBasicTunerHandler(var context: Context) :
 
     fun logAll() {
         val csr = all
-        var sb = StringBuilder()
+        var sb: StringBuilder
         while (csr.moveToNext()) {
             sb = StringBuilder().append("Row is " + csr.position.toString())
             sb.append("\n\torder is :").append(csr.getString(csr.getColumnIndex(COL_ORDER)))
