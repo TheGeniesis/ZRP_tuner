@@ -50,7 +50,9 @@ class DbBasicTunerHandler(var context: Context) :
     fun insertData(basicTunerModel: BasicTunerModel): Long {
         val db = this.writableDatabase
         val cv = ContentValues()
-        cv.put(Companion.COL_ID, basicTunerModel.id)
+        if (basicTunerModel.id > 0) {
+            cv.put(Companion.COL_ID, basicTunerModel.id)
+        }
         cv.put(Companion.COL_NAME, basicTunerModel.name)
         cv.put(Companion.COL_INSTRUMENT_ID, basicTunerModel.instrumentId)
         cv.put(Companion.COL_ORDER, basicTunerModel.order)
