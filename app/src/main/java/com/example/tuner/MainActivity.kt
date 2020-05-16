@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_title_bar.*
-import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         return TunerListView(
             tuning.name,
+            tuning.customTuning,
             if (tuning.tune1 !== null) tuneResult.find { it.id == tuning.tune1 }!!.name else null,
             if (tuning.tune2 !== null) tuneResult.find { it.id == tuning.tune2 }!!.name else null,
             if (tuning.tune3 !== null) tuneResult.find { it.id == tuning.tune3 }!!.name else null,

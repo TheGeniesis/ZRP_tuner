@@ -4,6 +4,7 @@ class BasicTunerModel(
     id: Int?,
     name: String,
     instrumentId: Int,
+    customTuning: Boolean,
     order: Int,
     tune1: Int?,
     tune2: Int?,
@@ -18,6 +19,7 @@ class BasicTunerModel(
 ) {
 
     var instrumentId: Int = 0
+    var customTuning: Boolean = false
     var order: Int = 0
     var tune1: Int? = null
     var tune2: Int? = null
@@ -38,6 +40,7 @@ class BasicTunerModel(
         }
         this.order = order
         this.name = name
+        this.customTuning = customTuning
         this.instrumentId = instrumentId
         this.tune1 = tune1
         this.tune2 = tune2

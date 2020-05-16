@@ -2,6 +2,7 @@ package com.example.tuner
 
 class TunerListView(
         name: String,
+        customTuning: Boolean,
         tune1: String?,
         tune2: String?,
         tune3: String?,
@@ -25,9 +26,11 @@ class TunerListView(
         var tune9: String? = null
         var tune10: String? = null
         var name: String = ""
+        var customTuning: Boolean = false
 
         init {
             this.name = name
+            this.customTuning = customTuning
             this.tune1 = tune1
             this.tune2 = tune2
             this.tune3 = tune3
@@ -60,5 +63,10 @@ class TunerListView(
     fun name(): String
     {
         return name
+    }
+
+    fun customTuning(): Boolean
+    {
+        return customTuning
     }
 }

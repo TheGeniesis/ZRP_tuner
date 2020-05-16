@@ -59,6 +59,7 @@ class TuneList : AppCompatActivity() {
                 tuningOptionList.add(
                     TunerListView(
                         tuning.name,
+                        tuning.customTuning,
                         if (tuning.tune1 !== null) tuneResult.find { it.id == tuning.tune1 }!!.name else null,
                         if (tuning.tune2 !== null) tuneResult.find { it.id == tuning.tune2 }!!.name else null,
                         if (tuning.tune3 !== null) tuneResult.find { it.id == tuning.tune3 }!!.name else null,

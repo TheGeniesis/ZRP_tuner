@@ -28,6 +28,7 @@ class DbBasicTunerHandler(var context: Context) :
                 Companion.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 Companion.COL_NAME + " VARCHAR(255)," +
                 Companion.COL_INSTRUMENT_ID + " INT(9)," +
+                Companion.COL_CUSTOM_TUNING + " INT(1)," +
                 Companion.COL_ORDER + " INT(9)," +
                 Companion.COL_TUNE_1 + " INT(9)," +
                 Companion.COL_TUNE_2 + " INT(9)," +
@@ -54,6 +55,7 @@ class DbBasicTunerHandler(var context: Context) :
         cv.put(Companion.COL_NAME, basicTunerModel.name)
         cv.put(Companion.COL_INSTRUMENT_ID, basicTunerModel.instrumentId)
         cv.put(Companion.COL_ORDER, basicTunerModel.order)
+        cv.put(Companion.COL_CUSTOM_TUNING, if (basicTunerModel.customTuning)  1 else 0)
         cv.put(Companion.COL_TUNE_1, basicTunerModel.tune1)
         cv.put(Companion.COL_TUNE_2, basicTunerModel.tune2)
         cv.put(Companion.COL_TUNE_3, basicTunerModel.tune3)
@@ -159,6 +161,7 @@ class DbBasicTunerHandler(var context: Context) :
         var name: String
         var instrumentId: Int
         var order: Int
+        var customTuning: Boolean
         var tune1: Int?
         var tune2: Int?
         var tune3: Int?
@@ -186,6 +189,7 @@ class DbBasicTunerHandler(var context: Context) :
                 tune7 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_7))
                 tune8 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_8))
                 tune9 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_9))
+                customTuning = cursor.getInt(cursor.getColumnIndex(Companion.COL_CUSTOM_TUNING)) == 1
                 tune10 =
                     cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_10))
 
@@ -194,6 +198,7 @@ class DbBasicTunerHandler(var context: Context) :
                         id,
                         name,
                         instrumentId,
+                        customTuning,
                         order,
                         tune1,
                         tune2,
@@ -221,6 +226,7 @@ class DbBasicTunerHandler(var context: Context) :
         const val COL_ID = "id"
         const val COL_NAME = "name"
         const val COL_ORDER = "custom_order"
+        const val COL_CUSTOM_TUNING = "custom_tuning"
         const val COL_INSTRUMENT_ID = "instrument_id"
         const val COL_TUNE_1 = "tun_1"
         const val COL_TUNE_2 = "tun_2"

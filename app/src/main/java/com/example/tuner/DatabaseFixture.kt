@@ -53,16 +53,19 @@ class DatabaseFixture
         val handler2 = DbBasicTunerHandler(context)
         handler2.create()
 
-        var basicTuner = BasicTunerModel(1, "E-standard", 1, 10, TuneEnum.E2, TuneEnum.A2,TuneEnum.D3,TuneEnum.G3,TuneEnum.B3,TuneEnum.E4, null, null, null, null);
+        var basicTuner = BasicTunerModel(1, "E-standard", 1, false, 10, TuneEnum.E2, TuneEnum.A2,TuneEnum.D3,TuneEnum.G3,TuneEnum.B3,TuneEnum.E4, null, null, null, null);
         handler2.insertData(basicTuner)
 
-        basicTuner = BasicTunerModel(2, "Drop D", 1, 9, TuneEnum.D2, TuneEnum.A2,TuneEnum.D3,TuneEnum.G3,TuneEnum.B3,TuneEnum.E4, null, null, null, null);
+        basicTuner = BasicTunerModel(2, "Drop D", 1, false, 9, TuneEnum.D2, TuneEnum.A2,TuneEnum.D3,TuneEnum.G3,TuneEnum.B3,TuneEnum.E4, null, null, null, null);
         handler2.insertData(basicTuner)
 
-        basicTuner = BasicTunerModel(3, "4-string standard", 2, 8, TuneEnum.E1, TuneEnum.A1,TuneEnum.D1,TuneEnum.G2,null, null, null, null, null, null);
+        basicTuner = BasicTunerModel(3, "4-string standard", 2, false, 8, TuneEnum.E1, TuneEnum.A1,TuneEnum.D1,TuneEnum.G2,null, null, null, null, null, null);
         handler2.insertData(basicTuner)
 
-        basicTuner = BasicTunerModel(4, "Drop D 4-string", 2, 7, TuneEnum.D1, TuneEnum.A1,TuneEnum.D1,TuneEnum.G2, null, null, null, null, null, null);
+        basicTuner = BasicTunerModel(4, "Drop D 4-string", 2,  false,7, TuneEnum.D1, TuneEnum.A1,TuneEnum.D1,TuneEnum.G2, null, null, null, null, null, null);
+        handler2.insertData(basicTuner)
+
+        basicTuner = BasicTunerModel(5, "Drop A 5-string", 2,  false,6, TuneEnum.A1, TuneEnum.E1, TuneEnum.A1,TuneEnum.D1,TuneEnum.G2, null, null, null, null, null);
         handler2.insertData(basicTuner)
     }
 }
