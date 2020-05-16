@@ -1,5 +1,6 @@
 package com.example.tuner
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +21,6 @@ class AddEditActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_edit)
         var id: Int? = null
 
-
         val context = this
         tuneList = DbTuneHandler(context).getAll()
 
@@ -34,61 +34,53 @@ class AddEditActivity : AppCompatActivity() {
         handleBackButton()
         handleAddTuneButton(selectedTuningOption)
         handleInstrumentSpinner()
-
-        val tuningOption = findViewById<Spinner>(R.id.add_note_spinner)
-
-        tuningOption.adapter = ArrayAdapter(
-            context,
-            android.R.layout.simple_list_item_1,
-            tuneList
-        )
+        handleTuneSpinner(context)
 
         findViewById<Button>(R.id.save_changes).setOnClickListener {
+            if (selectedTuneListElem.size == 0) {
+                //exception
+            }
+            var tune1: Int? = null
+            if (selectedTuneListElem.size >= 1) {
+                tune1 = selectedTuneListElem[0].id
+            }
+            var tune2: Int? = null
+            if (selectedTuneListElem.size >= 2) {
+                tune2 = selectedTuneListElem[1].id
+            }
+            var tune3: Int? = null
+            if (selectedTuneListElem.size >= 3) {
+                tune3 = selectedTuneListElem[2].id
+            }
+            var tune4: Int? = null
+            if (selectedTuneListElem.size >= 4) {
+                tune4 = selectedTuneListElem[3].id
+            }
+            var tune5: Int? = null
+            if (selectedTuneListElem.size >= 5) {
+                tune5 = selectedTuneListElem[4].id
+            }
+            var tune6: Int? = null
+            if (selectedTuneListElem.size >= 6) {
+                tune6 = selectedTuneListElem[5].id
+            }
+            var tune7: Int? = null
+            if (selectedTuneListElem.size >= 7) {
+                tune7 = selectedTuneListElem[6].id
+            }
+            var tune8: Int? = null
+            if (selectedTuneListElem.size >= 8) {
+                tune8 = selectedTuneListElem[7].id
+            }
+            var tune9: Int? = null
+            if (selectedTuneListElem.size >= 9) {
+                tune9 = selectedTuneListElem[8].id
+            }
+            var tune10: Int? = null
+            if (selectedTuneListElem.size >= 10) {
+                tune10 = selectedTuneListElem[9].id
+            }
             if (id == null) {
-                if (selectedTuneListElem.size == 0) {
-                    //exception
-                }
-                var tune1: Int? = null
-                if (selectedTuneListElem.size >= 1) {
-                    tune1= selectedTuneListElem[0].id
-                }
-                var tune2: Int? = null
-                if (selectedTuneListElem.size >= 2) {
-                    tune2= selectedTuneListElem[1].id
-                }
-                var tune3: Int? = null
-                if (selectedTuneListElem.size >= 3) {
-                    tune3= selectedTuneListElem[2].id
-                }
-                var tune4: Int? = null
-                if (selectedTuneListElem.size >= 4) {
-                    tune4= selectedTuneListElem[3].id
-                }
-                var tune5: Int? = null
-                if (selectedTuneListElem.size >= 5) {
-                    tune5= selectedTuneListElem[4].id
-                }
-                var tune6: Int? = null
-                if (selectedTuneListElem.size >= 6) {
-                    tune6= selectedTuneListElem[5].id
-                }
-                var tune7: Int? = null
-                if (selectedTuneListElem.size >= 7) {
-                    tune7= selectedTuneListElem[6].id
-                }
-                var tune8: Int? = null
-                if (selectedTuneListElem.size >= 8) {
-                    tune8= selectedTuneListElem[7].id
-                }
-                var tune9: Int? = null
-                if (selectedTuneListElem.size >= 9) {
-                    tune9= selectedTuneListElem[8].id
-                }
-                var tune10: Int? = null
-                if (selectedTuneListElem.size >= 10) {
-                    tune10= selectedTuneListElem[9].id
-                }
-
                 if (selectedInstrument !== null) {
                     id = DbBasicTunerHandler(context).insertData(
                         BasicTunerModel(
@@ -112,14 +104,39 @@ class AddEditActivity : AppCompatActivity() {
                 } else {
                     //validation message
                 }
-                //insert
             } else {
-                //update
+                DbBasicTunerHandler(context).updateData(
+                    BasicTunerModel(
+                        id,
+                        tuning_name.text.toString(),
+                        selectedInstrument!!.id,
+                        true,
+                        0,
+                        tune1,
+                        tune2,
+                        tune3,
+                        tune4,
+                        tune5,
+                        tune6,
+                        tune7,
+                        tune8,
+                        tune9,
+                        tune10
+                    )
+                )
             }
-
-            val intent = Intent(this, AddEditActivity::class.java)
-            startActivity(intent)
         }
+    }
+
+    private fun handleTuneSpinner(context: Context) {
+        val tuningOption = findViewById<Spinner>(R.id.add_note_spinner)
+
+        tuningOption.adapter = ArrayAdapter(
+            context,
+            android.R.layout.simple_list_item_1,
+            tuneList
+        )
+
     }
 
     private fun handleInstrumentSpinner() {
@@ -156,6 +173,7 @@ class AddEditActivity : AppCompatActivity() {
     }
 
     private fun handleAddTuneButton(selectedTuningOption: ListView) {
+
         findViewById<Button>(R.id.add_note_action).setOnClickListener {
             if (selectedTuneListElem.size >= 10) {
                 //throw exception, out of limit

@@ -56,7 +56,7 @@ class DbBasicTunerHandler(var context: Context) :
         cv.put(Companion.COL_NAME, basicTunerModel.name)
         cv.put(Companion.COL_INSTRUMENT_ID, basicTunerModel.instrumentId)
         cv.put(Companion.COL_ORDER, basicTunerModel.order)
-        cv.put(Companion.COL_CUSTOM_TUNING, if (basicTunerModel.customTuning)  1 else 0)
+        cv.put(Companion.COL_CUSTOM_TUNING, if (basicTunerModel.customTuning) 1 else 0)
         cv.put(Companion.COL_TUNE_1, basicTunerModel.tune1)
         cv.put(Companion.COL_TUNE_2, basicTunerModel.tune2)
         cv.put(Companion.COL_TUNE_3, basicTunerModel.tune3)
@@ -79,18 +79,47 @@ class DbBasicTunerHandler(var context: Context) :
         return result
     }
 
+    fun updateData(basicTunerModel: BasicTunerModel) {
+        val db = this.writableDatabase
+        val cv = ContentValues()
+        cv.put(Companion.COL_ID, basicTunerModel.id)
+        cv.put(Companion.COL_NAME, basicTunerModel.name)
+        cv.put(Companion.COL_INSTRUMENT_ID, basicTunerModel.instrumentId)
+        cv.put(Companion.COL_ORDER, basicTunerModel.order)
+        cv.put(Companion.COL_CUSTOM_TUNING, if (basicTunerModel.customTuning) 1 else 0)
+        cv.put(Companion.COL_TUNE_1, basicTunerModel.tune1)
+        cv.put(Companion.COL_TUNE_2, basicTunerModel.tune2)
+        cv.put(Companion.COL_TUNE_3, basicTunerModel.tune3)
+        cv.put(Companion.COL_TUNE_4, basicTunerModel.tune4)
+        cv.put(Companion.COL_TUNE_5, basicTunerModel.tune5)
+        cv.put(Companion.COL_TUNE_6, basicTunerModel.tune6)
+        cv.put(Companion.COL_TUNE_7, basicTunerModel.tune7)
+        cv.put(Companion.COL_TUNE_8, basicTunerModel.tune8)
+        cv.put(Companion.COL_TUNE_9, basicTunerModel.tune9)
+        cv.put(Companion.COL_TUNE_10, basicTunerModel.tune10)
+
+        val result =
+            db.update(Companion.TABLE_NAME, cv, "id = ?", arrayOf(basicTunerModel.id.toString()))
+        if (result == 1) {
+            Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+        }
+        db.close()
+    }
+
     fun setTheHighestOrder(id: Int) {
         val db = this.writableDatabase
         try {
             db.execSQL(
                 "UPDATE ${Companion.TABLE_NAME} " +
-                    "SET custom_order=(" +
+                        "SET custom_order=(" +
                         "(SELECT MAX(custom_order) as co " +
                         "FROM ${Companion.TABLE_NAME} " +
                         "ORDER BY co " +
                         "DESC LIMIT 1)+1" +
-                    ") " +
-                    "WHERE id = ?",
+                        ") " +
+                        "WHERE id = ?",
                 arrayOf(id.toString())
             )
 
@@ -100,17 +129,17 @@ class DbBasicTunerHandler(var context: Context) :
         db.close()
     }
 
-    fun getCurrentTuning() : BasicTunerModel?
-    {
+    fun getCurrentTuning(): BasicTunerModel? {
         val db = this.readableDatabase
         var cursor: Cursor? = null
         try {
-            cursor = db.rawQuery("SELECT * FROM ${Companion.TABLE_NAME} WHERE custom_order = (" +
-                    "SELECT MAX(custom_order) as co " +
+            cursor = db.rawQuery(
+                "SELECT * FROM ${Companion.TABLE_NAME} WHERE custom_order = (" +
+                        "SELECT MAX(custom_order) as co " +
                         " FROM ${Companion.TABLE_NAME} " +
                         " ORDER BY co DESC " +
                         " LIMIT 1" +
-                    ") ",
+                        ") ",
                 null
             )
         } catch (e: SQLiteException) {
@@ -139,9 +168,10 @@ class DbBasicTunerHandler(var context: Context) :
         try {
             cursor = db.rawQuery(
                 "SELECT * FROM ${Companion.TABLE_NAME} " +
-                     " WHERE instrument_id IN (?)" +
-                     " ORDER BY custom_order DESC",
-                arrayOf<String>(id.toString()
+                        " WHERE instrument_id IN (?)" +
+                        " ORDER BY custom_order DESC",
+                arrayOf<String>(
+                    id.toString()
                 )
             )
         } catch (e: SQLiteException) {
@@ -192,7 +222,8 @@ class DbBasicTunerHandler(var context: Context) :
                 tune7 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_7))
                 tune8 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_8))
                 tune9 = cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_9))
-                customTuning = cursor.getInt(cursor.getColumnIndex(Companion.COL_CUSTOM_TUNING)) == 1
+                customTuning =
+                    cursor.getInt(cursor.getColumnIndex(Companion.COL_CUSTOM_TUNING)) == 1
                 tune10 =
                     cursor.getIntOrNull(cursor.getColumnIndex(Companion.COL_TUNE_10))
 
