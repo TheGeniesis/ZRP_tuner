@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         return TunerListView(
+            tuning.id,
             tuning.name,
             tuning.customTuning,
             if (tuning.tune1 !== null) tuneResult.find { it.id == tuning.tune1 }!!.name else null,

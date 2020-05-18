@@ -16,8 +16,6 @@ class TuneList : AppCompatActivity() {
         setContentView(R.layout.activity_tune_list)
 
         title_bar.text = "Tunes";
-//            intent.putExtra("user", userModelArrayList!![position])
-        //        userModel = intent.getSerializableExtra("user") as UserModel
         prepareAndHandleList(this)
         prepareAndHandleAddNewTuning(this)
     }
@@ -71,6 +69,7 @@ class TuneList : AppCompatActivity() {
             for (tuning in tuningList) {
                 tuningOptionList.add(
                     TunerListView(
+                        tuning.id,
                         tuning.name,
                         tuning.customTuning,
                         if (tuning.tune1 !== null) tuneResult.find { it.id == tuning.tune1 }!!.name else null,
@@ -93,14 +92,6 @@ class TuneList : AppCompatActivity() {
                 context,
                 tuningOptionList
             )
-
-            tuningOption.setOnItemClickListener { _, _, position, _ ->
-                val selectedRecipe = tuningList[position]
-                DbBasicTunerHandler(context).setTheHighestOrder(selectedRecipe.id)
-
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
         }
     }
 }

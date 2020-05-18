@@ -17,8 +17,7 @@ class AddEditActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit)
-        var id: Int? = null
-
+        var order = 0
         val context = this
         tuneList = DbTuneHandler(context).getAll()
 
@@ -29,10 +28,63 @@ class AddEditActivity : AppCompatActivity() {
             selectedTuneListElem
         )
 
+        val instrumentList = DbInstrumentHandler(this).getAll()
+
         handleBackButton()
         handleAddTuneButton(selectedTuningOption)
-        handleInstrumentSpinner()
+        handleInstrumentSpinner(instrumentList)
         handleTuneSpinner(context)
+
+        var id: Int? = intent.getSerializableExtra("tuning_id") as Int?
+        if (id !== null) {
+            val elemToModify = DbBasicTunerHandler(this).getById(id)
+            if (elemToModify !== null) {
+                if (elemToModify.tune1 !== null) {
+                    selectedTuneListElem.add(tuneList.find { it.id == elemToModify.tune1 }!!)
+                }
+                if (elemToModify.tune2 !== null) {
+                    selectedTuneListElem.add(
+                        tuneList.find { it.id == elemToModify.tune2 }!!)
+                }
+                if (elemToModify.tune3 !== null) {
+                    selectedTuneListElem.add(
+                        tuneList.find { it.id == elemToModify.tune3 }!!)
+                }
+                if (elemToModify.tune4 !== null) {
+                    selectedTuneListElem.add(
+                        tuneList.find { it.id == elemToModify.tune4 }!!)
+                }
+                if (elemToModify.tune5 !== null) {
+                    selectedTuneListElem.add(
+                        tuneList.find { it.id == elemToModify.tune5 }!!)
+                }
+                if (elemToModify.tune6 !== null) {
+                    selectedTuneListElem.add(
+                        tuneList.find { it.id == elemToModify.tune6 }!!)
+                }
+                if (elemToModify.tune7 !== null) {
+                    selectedTuneListElem.add(
+                        tuneList.find { it.id == elemToModify.tune7 }!!)
+                }
+                if (elemToModify.tune8 !== null) {
+                    selectedTuneListElem.add(
+                        tuneList.find { it.id == elemToModify.tune8 }!!)
+                }
+                if (elemToModify.tune9 !== null) {
+                    selectedTuneListElem.add(
+                        tuneList.find { it.id == elemToModify.tune9 }!!)
+                }
+                if (elemToModify.tune10 !== null) {
+                    selectedTuneListElem.add(
+                        tuneList.find { it.id == elemToModify.tune10 }!!)
+                }
+                order = elemToModify.order
+                id = elemToModify.id
+                tuning_name.setText(elemToModify.name)
+                instrumentList.find { it.id == elemToModify.instrumentId }
+            }
+        }
+
 
         findViewById<Button>(R.id.save_changes).setOnClickListener {
             if (selectedTuneListElem.size == 0) {
@@ -86,7 +138,7 @@ class AddEditActivity : AppCompatActivity() {
                             tuning_name.text.toString(),
                             selectedInstrument!!.id,
                             true,
-                            0,
+                            order,
                             tune1,
                             tune2,
                             tune3,
@@ -109,7 +161,7 @@ class AddEditActivity : AppCompatActivity() {
                         tuning_name.text.toString(),
                         selectedInstrument!!.id,
                         true,
-                        0,
+                        order,
                         tune1,
                         tune2,
                         tune3,
@@ -134,13 +186,11 @@ class AddEditActivity : AppCompatActivity() {
             android.R.layout.simple_list_item_1,
             tuneList
         )
-
     }
 
-    private fun handleInstrumentSpinner() {
+    private fun handleInstrumentSpinner(instruments: ArrayList<InstrumentModel>) {
         val instrumentOption = findViewById<Spinner>(R.id.instrument_id)
 
-        val instruments = DbInstrumentHandler(this).getAll()
         instrumentOption.adapter = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,

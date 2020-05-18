@@ -16,4 +16,32 @@
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
         />
+
+    <Button
+        android:id="@+id/tuning_list_element_edit_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="50dp"
+        android:text="e" />
+
+    <Button
+        android:id="@+id/tuning_list_element_delete_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="50dp"
+        android:text="x" />
+
+    <Button
+        android:id="@+id/tuning_list_element_choose_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="50dp"
+        android:text="v" />
+
 </RelativeLayout>

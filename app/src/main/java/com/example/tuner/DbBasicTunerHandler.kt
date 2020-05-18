@@ -47,6 +47,13 @@ class DbBasicTunerHandler(var context: Context) :
         TODO("Not yet implemented")
     }
 
+    fun deleteById(id: Int) {
+        val db = this.writableDatabase
+        db.delete(Companion.TABLE_NAME, "id = ?", arrayOf(id.toString()))
+
+        db.close()
+    }
+
     fun insertData(basicTunerModel: BasicTunerModel): Long {
         val db = this.writableDatabase
         val cv = ContentValues()
@@ -185,6 +192,24 @@ class DbBasicTunerHandler(var context: Context) :
         }
 
         return ArrayList()
+    }
+
+    fun getById(id: Int): BasicTunerModel? {
+
+        val db = this.readableDatabase
+        var cursor: Cursor? = null
+        try {
+            cursor = db.rawQuery(
+                "SELECT * FROM ${Companion.TABLE_NAME} " +
+                        " WHERE id = ?",
+                arrayOf<String>(
+                    id.toString()
+                )
+            )
+        } catch (e: SQLiteException) {
+        }
+
+        return cursor?.let { getResult(it).first() }
     }
 
     private fun getResult(cursor: Cursor): ArrayList<BasicTunerModel> {

@@ -1,6 +1,7 @@
 package com.example.tuner
 
 class TunerListView(
+        id: Int?,
         name: String,
         customTuning: Boolean,
         tune1: String?,
@@ -15,6 +16,7 @@ class TunerListView(
         tune10: String?
     ) {
 
+        var id: Int? = null
         var tune1: String? = null
         var tune2: String? = null
         var tune3: String? = null
@@ -29,6 +31,7 @@ class TunerListView(
         var customTuning: Boolean = false
 
         init {
+            this.id = id
             this.name = name
             this.customTuning = customTuning
             this.tune1 = tune1
@@ -68,5 +71,9 @@ class TunerListView(
     fun customTuning(): Boolean
     {
         return customTuning
+    }
+    fun id(): Int?
+    {
+        return id
     }
 }
