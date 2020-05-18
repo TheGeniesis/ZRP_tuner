@@ -51,7 +51,18 @@ class AddEditActivity : AppCompatActivity() {
                         tuneList.find { it.id == elemToModify.tune3 }!!)
                 }
                 if (elemToModify.tune4 !== null) {
-                    selectedTuneListElem.add(
+sadasdasdasdadsasdasdsdasddasasd
+asdadsasd
+dasdasas
+dasdasddas
+sadas
+sda
+
+asdasdasdasd
+
+
+asddsasddasdas
+selectedTuneListElem.add(
                         tuneList.find { it.id == elemToModify.tune4 }!!)
                 }
                 if (elemToModify.tune5 !== null) {
