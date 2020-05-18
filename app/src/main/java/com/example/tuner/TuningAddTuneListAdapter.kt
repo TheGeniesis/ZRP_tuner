@@ -37,6 +37,11 @@ class TuningAddTuneListAdapter(private val context: Context,
 
         val deleteTuningButton = rowView.findViewById(R.id.tuning_add_tune_delete_button) as Button
 
+        deleteTuningButton.setOnClickListener{
+            dataSource.remove(dataSource[position])
+            notifyDataSetChanged()
+        }
+
         val tuner = getItem(position) as TuneModel
 
         tuningName.text = tuner.name

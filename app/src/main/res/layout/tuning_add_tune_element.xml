@@ -13,17 +13,19 @@
 
     <Button
         android:id="@+id/tuning_add_tune_delete_button"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:text="x"
-        android:layout_marginTop="10dp"
-        />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="50dp"
+        android:text="x" />
+
     <TextView
         android:id="@+id/tuning_add_tune_frequency"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="200dp"
         android:layout_marginLeft="200dp"
-        android:layout_marginStart="200dp" />
+        android:layout_marginTop="50dp" />
 
 </RelativeLayout>

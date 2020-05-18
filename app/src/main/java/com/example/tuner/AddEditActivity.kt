@@ -2,12 +2,10 @@ package com.example.tuner
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_add_edit.*
 
 class AddEditActivity : AppCompatActivity() {
@@ -24,7 +22,7 @@ class AddEditActivity : AppCompatActivity() {
         val context = this
         tuneList = DbTuneHandler(context).getAll()
 
-        val selectedTuningOption = findViewById<ListView>(R.id.selected_tunings_list)
+        var selectedTuningOption = findViewById<ListView>(R.id.selected_tunings_list)
 
         selectedTuningOption.adapter = TuningAddTuneListAdapter(
             context,

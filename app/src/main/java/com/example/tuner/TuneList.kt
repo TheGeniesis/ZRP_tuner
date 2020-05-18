@@ -16,7 +16,8 @@ class TuneList : AppCompatActivity() {
         setContentView(R.layout.activity_tune_list)
 
         title_bar.text = "Tunes";
-
+//            intent.putExtra("user", userModelArrayList!![position])
+        //        userModel = intent.getSerializableExtra("user") as UserModel
         prepareAndHandleList(this)
         prepareAndHandleAddNewTuning(this)
     }
