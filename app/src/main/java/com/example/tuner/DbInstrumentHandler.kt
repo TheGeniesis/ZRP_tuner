@@ -38,16 +38,18 @@ class DbInstrumentHandler(var context: Context) :
         TODO("Not yet implemented")
     }
 
-    fun insertData(instrumentModel: InstrumentModel) {
+    fun insertData(instrumentModel: InstrumentModel, silentMode: Boolean = false) {
         val db = this.writableDatabase
         val cv = ContentValues()
         cv.put(Companion.COL_ID, instrumentModel.id)
         cv.put(Companion.COL_NAME, instrumentModel.name)
         val result = db.insert(Companion.TABLE_NAME, null, cv)
-        if (result == (-1).toLong()) {
-            Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
-        } else {
-            Toasty.success(context, "Success", Toast.LENGTH_SHORT).show()
+        if (!silentMode) {
+            if (result == (-1).toLong()) {
+                Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
+            } else {
+                Toasty.success(context, "Success", Toast.LENGTH_SHORT).show()
+            }
         }
         db.close()
     }

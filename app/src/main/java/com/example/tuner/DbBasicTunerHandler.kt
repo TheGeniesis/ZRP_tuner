@@ -55,7 +55,7 @@ class DbBasicTunerHandler(var context: Context) :
         db.close()
     }
 
-    fun insertData(basicTunerModel: BasicTunerModel): Long {
+    fun insertData(basicTunerModel: BasicTunerModel, silentMode: Boolean = false): Long {
         val db = this.writableDatabase
         val cv = ContentValues()
         if (basicTunerModel.id > 0) {
@@ -77,10 +77,12 @@ class DbBasicTunerHandler(var context: Context) :
         cv.put(Companion.COL_TUNE_10, basicTunerModel.tune10)
 
         val result = db.insert(Companion.TABLE_NAME, null, cv)
-        if (result == (-1).toLong()) {
-            Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
-        } else {
-            Toasty.success(context, "Success", Toast.LENGTH_SHORT).show()
+        if (!silentMode) {
+            if (result == (-1).toLong()) {
+                Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
+            } else {
+                Toasty.success(context, "Success", Toast.LENGTH_SHORT).show()
+            }
         }
         db.close()
 
@@ -109,9 +111,9 @@ class DbBasicTunerHandler(var context: Context) :
         val result =
             db.update(Companion.TABLE_NAME, cv, "id = ?", arrayOf(basicTunerModel.id.toString()))
         if (result == 1) {
-            Toasty.error(context, "Success", Toast.LENGTH_SHORT).show()
+            Toasty.success(context, "Success", Toast.LENGTH_SHORT).show()
         } else {
-            Toasty.success(context, "Failed", Toast.LENGTH_SHORT).show()
+            Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
         }
         db.close()
     }

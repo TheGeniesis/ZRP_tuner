@@ -27,17 +27,19 @@ class DbTuneHandler(var context: Context) :
         TODO("Not yet implemented")
     }
 
-    fun insertData(tuneModel: TuneModel) {
+    fun insertData(tuneModel: TuneModel, silentMode: Boolean = false) {
         val db = this.writableDatabase
         val cv = ContentValues()
         cv.put(Companion.COL_ID, tuneModel.id)
         cv.put(Companion.COL_NAME, tuneModel.name)
         cv.put(Companion.COL_EXACT_FREQUENCY, tuneModel.exactFrequency)
         val result = db.insert(Companion.TABLE_NAME, null, cv)
-        if (result == (-1).toLong()) {
-            Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
-        } else {
-            Toasty.success(context, "Success", Toast.LENGTH_SHORT).show()
+        if (!silentMode) {
+            if (result == (-1).toLong()) {
+                Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
+            } else {
+                Toasty.success(context, "Success", Toast.LENGTH_SHORT).show()
+            }
         }
         db.close()
     }
