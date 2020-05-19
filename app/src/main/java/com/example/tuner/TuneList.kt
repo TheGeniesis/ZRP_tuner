@@ -17,12 +17,12 @@ class TuneList : AppCompatActivity() {
 
         title_bar.text = "Tunes";
         prepareAndHandleList(this)
-        prepareAndHandleAddNewTuning(this)
+        prepareAndHandleAddNewTuning()
     }
 
-    private fun prepareAndHandleAddNewTuning(context: Context)
+    private fun prepareAndHandleAddNewTuning()
     {
-        var button = findViewById<Button>(R.id.add_new_tuning)
+        val button = findViewById<Button>(R.id.add_new_tuning)
         button.setOnClickListener {
             val intent = Intent(this, AddEditActivity::class.java)
             startActivity(intent)
@@ -31,7 +31,7 @@ class TuneList : AppCompatActivity() {
 
     private fun prepareAndHandleList(context: Context)
     {
-        var option = findViewById<Spinner>(R.id.select_tune)
+        val option = findViewById<Spinner>(R.id.select_tune)
 
         val instruments = DbInstrumentHandler(this).getAll()
         option.adapter = ArrayAdapter(

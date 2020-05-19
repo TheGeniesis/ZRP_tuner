@@ -9,11 +9,14 @@ import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.TextView
 
-class TuneListElementAdapter(private val context: Context,
-                             private val dataSource: ArrayList<TunerListView>) : BaseAdapter() {
+class TuneListElementAdapter(
+    private val context: Context,
+    private val dataSource: ArrayList<TunerListView>
+) : BaseAdapter() {
 
-    private val inflater: LayoutInflater
-            = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    private val inflater: LayoutInflater =
+        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
     override fun getCount(): Int {
         return dataSource.size
     }
@@ -44,10 +47,13 @@ class TuneListElementAdapter(private val context: Context,
             val intent = Intent(context, MainActivity::class.java)
             context.startActivity(intent)
         }
+        val deleteButton =
+            rowView.findViewById(R.id.tuning_list_element_delete_button) as Button
 
-        val deleteButton = rowView.findViewById(R.id.tuning_list_element_delete_button) as Button
 
-        deleteButton.setOnClickListener{
+
+
+        deleteButton.setOnClickListener {
             if (dataSource[position].id !== null) {
                 DbBasicTunerHandler(context).deleteById(dataSource[position].id!!)
             }
@@ -59,10 +65,15 @@ class TuneListElementAdapter(private val context: Context,
 
         val editButton = rowView.findViewById(R.id.tuning_list_element_edit_button) as Button
 
-        editButton.setOnClickListener{
+        editButton.setOnClickListener {
             val intent = Intent(context, AddEditActivity::class.java)
             intent.putExtra("tuning_id", dataSource[position].id())
             context.startActivity(intent)
+        }
+
+        if (!dataSource[position].customTuning()) {
+            deleteButton.visibility = View.INVISIBLE
+            editButton.visibility = View.INVISIBLE
         }
 
         val tuner = getItem(position) as TunerListView

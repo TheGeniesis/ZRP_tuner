@@ -33,7 +33,7 @@ class AddEditActivity : AppCompatActivity() {
         handleBackButton()
         handleAddTuneButton(selectedTuningOption)
         handleTuneSpinner(context)
-
+        val spinnerInstrument = handleInstrumentSpinner(instrumentList)
         var id: Int? = intent.getSerializableExtra("tuning_id") as Int?
         if (id !== null) {
             val elemToModify = DbBasicTunerHandler(this).getById(id)
@@ -81,7 +81,7 @@ class AddEditActivity : AppCompatActivity() {
                 id = elemToModify.id
                 tuning_name.setText(elemToModify.name)
                 selectedInstrument = instrumentList.find { it.id == elemToModify.instrumentId }
-                handleInstrumentSpinner(instrumentList)?.setSelection(instrumentList.indexOf(selectedInstrument))
+                spinnerInstrument?.setSelection(instrumentList.indexOf(selectedInstrument))
             }
         }
 
