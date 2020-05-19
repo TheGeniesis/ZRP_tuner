@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import android.widget.Toast
 import androidx.core.database.getIntOrNull
+import es.dmoral.toasty.Toasty
 
 
 class DbBasicTunerHandler(var context: Context) :
@@ -77,9 +78,9 @@ class DbBasicTunerHandler(var context: Context) :
 
         val result = db.insert(Companion.TABLE_NAME, null, cv)
         if (result == (-1).toLong()) {
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+            Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
+            Toasty.success(context, "Success", Toast.LENGTH_SHORT).show()
         }
         db.close()
 
@@ -108,9 +109,9 @@ class DbBasicTunerHandler(var context: Context) :
         val result =
             db.update(Companion.TABLE_NAME, cv, "id = ?", arrayOf(basicTunerModel.id.toString()))
         if (result == 1) {
-            Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
+            Toasty.error(context, "Success", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+            Toasty.success(context, "Failed", Toast.LENGTH_SHORT).show()
         }
         db.close()
     }
@@ -131,7 +132,7 @@ class DbBasicTunerHandler(var context: Context) :
             )
 
         } catch (e: SQLiteException) {
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+            Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
         }
         db.close()
     }
@@ -150,7 +151,7 @@ class DbBasicTunerHandler(var context: Context) :
                 null
             )
         } catch (e: SQLiteException) {
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+            Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
         }
 
         return cursor?.let { getResult(it).first() }
@@ -162,7 +163,7 @@ class DbBasicTunerHandler(var context: Context) :
         try {
             cursor = db.rawQuery("SELECT * FROM $Companion.TABLE_NAME", null)
         } catch (e: SQLiteException) {
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+            Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
         }
 
         return cursor?.let { getResult(it) }

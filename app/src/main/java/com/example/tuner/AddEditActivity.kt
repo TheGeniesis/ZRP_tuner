@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_add_edit.*
+import kotlin.system.exitProcess
 
 class AddEditActivity : AppCompatActivity() {
 
@@ -31,7 +33,7 @@ class AddEditActivity : AppCompatActivity() {
         val instrumentList = DbInstrumentHandler(this).getAll()
 
         handleBackButton()
-        handleAddTuneButton(selectedTuningOption)
+        handleAddTuneButton(context, selectedTuningOption)
         handleTuneSpinner(context)
         val spinnerInstrument = handleInstrumentSpinner(instrumentList)
         var id: Int? = intent.getSerializableExtra("tuning_id") as Int?
@@ -86,8 +88,15 @@ class AddEditActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.save_changes).setOnClickListener {
+            var hasError = false
+            if (tuning_name.text.toString().length == 0) {
+                Toasty.error(context, "Tuning name can't be empty", Toast.LENGTH_SHORT).show()
+                hasError = true
+            }
+
             if (selectedTuneListElem.size == 0) {
-                //exception
+                hasError = true
+                Toasty.error(context, "There need to be chosen minimum 1 tune", Toast.LENGTH_SHORT).show()
             }
             var tune1: Int? = null
             if (selectedTuneListElem.size >= 1) {
@@ -130,7 +139,7 @@ class AddEditActivity : AppCompatActivity() {
                 tune10 = selectedTuneListElem[9].id
             }
             if (id == null) {
-                if (selectedInstrument !== null) {
+                if (selectedInstrument !== null && !hasError) {
                     id = DbBasicTunerHandler(context).insertData(
                         BasicTunerModel(
                             null,
@@ -151,9 +160,10 @@ class AddEditActivity : AppCompatActivity() {
                         )
                     ).toInt()
                 } else {
-                    //validation message
+                    hasError = true
+                    Toasty.error(context, "You have to chose instrument", Toast.LENGTH_SHORT).show()
                 }
-            } else {
+            } else if (!hasError){
                 DbBasicTunerHandler(context).updateData(
                     BasicTunerModel(
                         id,
@@ -221,11 +231,11 @@ class AddEditActivity : AppCompatActivity() {
         }
     }
 
-    private fun handleAddTuneButton(selectedTuningOption: ListView) {
+    private fun handleAddTuneButton(context: Context, selectedTuningOption: ListView) {
 
         findViewById<Button>(R.id.add_note_action).setOnClickListener {
             if (selectedTuneListElem.size >= 10) {
-                //throw exception, out of limit
+                Toasty.error(context, "You can't choose more than 10 elements", Toast.LENGTH_SHORT).show()
             } else {
                 selectedTuneListElem.add(tuneList[add_note_spinner.selectedItemPosition])
                 (selectedTuningOption.adapter as TuningAddTuneListAdapter).notifyDataSetChanged()

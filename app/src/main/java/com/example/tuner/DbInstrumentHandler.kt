@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import es.dmoral.toasty.Toasty
 
 
 class DbInstrumentHandler(var context: Context) :
@@ -44,9 +45,9 @@ class DbInstrumentHandler(var context: Context) :
         cv.put(Companion.COL_NAME, instrumentModel.name)
         val result = db.insert(Companion.TABLE_NAME, null, cv)
         if (result == (-1).toLong()) {
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+            Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
+            Toasty.success(context, "Success", Toast.LENGTH_SHORT).show()
         }
         db.close()
     }

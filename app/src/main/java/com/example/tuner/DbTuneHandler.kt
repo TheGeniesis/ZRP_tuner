@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import es.dmoral.toasty.Toasty
 
 
 class DbTuneHandler(var context: Context) :
@@ -34,9 +35,9 @@ class DbTuneHandler(var context: Context) :
         cv.put(Companion.COL_EXACT_FREQUENCY, tuneModel.exactFrequency)
         val result = db.insert(Companion.TABLE_NAME, null, cv)
         if (result == (-1).toLong()) {
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+            Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
+            Toasty.success(context, "Success", Toast.LENGTH_SHORT).show()
         }
         db.close()
     }
