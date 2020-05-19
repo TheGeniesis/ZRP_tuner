@@ -15,7 +15,7 @@ class DbTuneHandler(var context: Context) :
         val createTable = "CREATE TABLE IF NOT EXISTS  " + Companion.TABLE_NAME + " (" +
                 Companion.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 Companion.COL_NAME + " VARCHAR(255)," +
-                Companion.COL_EXACT_FREQUENCY + " FLOAT" +
+                Companion.COL_EXACT_FREQUENCY + " DOUBLE" +
                 ")"
         db?.execSQL(createTable)
     }
@@ -31,6 +31,7 @@ class DbTuneHandler(var context: Context) :
         val cv = ContentValues()
         cv.put(Companion.COL_ID, tuneModel.id)
         cv.put(Companion.COL_NAME, tuneModel.name)
+        cv.put(Companion.COL_EXACT_FREQUENCY, tuneModel.exactFrequency)
         val result = db.insert(Companion.TABLE_NAME, null, cv)
         if (result == (-1).toLong()) {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
@@ -59,7 +60,6 @@ class DbTuneHandler(var context: Context) :
                 name = cursor.getString(cursor.getColumnIndex(Companion.COL_NAME))
                 exactFrequency =
                     cursor.getDouble(cursor.getColumnIndex(Companion.COL_EXACT_FREQUENCY))
-
                 tunes.add(TuneModel(id, name, exactFrequency))
                 cursor.moveToNext()
             }
