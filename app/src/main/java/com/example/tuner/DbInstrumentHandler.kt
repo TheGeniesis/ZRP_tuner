@@ -15,12 +15,13 @@ class DbInstrumentHandler(var context: Context) :
     fun drop() {
         //uncomment it to remove database.
         // it will produce error with migration after call you need to comment it and run application again so new db will be created
-             context.deleteDatabase(DATABASE_NAME)
+        context.deleteDatabase(DATABASE_NAME)
         this.close()
-             context.openOrCreateDatabase(DATABASE_NAME, Context.MODE_PRIVATE, null)
+        context.openOrCreateDatabase(DATABASE_NAME, Context.MODE_PRIVATE, null)
         this.close()
 
     }
+
     fun create() {
         onCreate(this.writableDatabase)
     }
@@ -48,12 +49,10 @@ class DbInstrumentHandler(var context: Context) :
             Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
         }
         db.close()
-
     }
 
     fun getAll(): ArrayList<InstrumentModel> {
         val instruments = ArrayList<InstrumentModel>()
-
 
         val db = this.writableDatabase
 
