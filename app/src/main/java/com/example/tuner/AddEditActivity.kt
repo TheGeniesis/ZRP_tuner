@@ -32,7 +32,6 @@ class AddEditActivity : AppCompatActivity() {
 
         handleBackButton()
         handleAddTuneButton(selectedTuningOption)
-        handleInstrumentSpinner(instrumentList)
         handleTuneSpinner(context)
 
         var id: Int? = intent.getSerializableExtra("tuning_id") as Int?
@@ -81,10 +80,10 @@ class AddEditActivity : AppCompatActivity() {
                 order = elemToModify.order
                 id = elemToModify.id
                 tuning_name.setText(elemToModify.name)
-                instrumentList.find { it.id == elemToModify.instrumentId }
+                selectedInstrument = instrumentList.find { it.id == elemToModify.instrumentId }
+                handleInstrumentSpinner(instrumentList)?.setSelection(instrumentList.indexOf(selectedInstrument))
             }
         }
-
 
         findViewById<Button>(R.id.save_changes).setOnClickListener {
             if (selectedTuneListElem.size == 0) {
@@ -188,7 +187,7 @@ class AddEditActivity : AppCompatActivity() {
         )
     }
 
-    private fun handleInstrumentSpinner(instruments: ArrayList<InstrumentModel>) {
+    private fun handleInstrumentSpinner(instruments: ArrayList<InstrumentModel>): Spinner? {
         val instrumentOption = findViewById<Spinner>(R.id.instrument_id)
 
         instrumentOption.adapter = ArrayAdapter(
@@ -198,8 +197,8 @@ class AddEditActivity : AppCompatActivity() {
         )
         instrumentOption.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                instrumentOption.setSelection(instruments.first().id)
-            }
+                    instrumentOption.setSelection(instruments.first().id)
+               }
 
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -210,6 +209,8 @@ class AddEditActivity : AppCompatActivity() {
                 selectedInstrument = instruments[position]
             }
         }
+
+        return instrumentOption
     }
 
 
