@@ -15,7 +15,7 @@ class TuneList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tune_list)
 
-        title_bar.text = "Tunes";
+       // title_bar.text = "Tunes";
         prepareAndHandleList(this)
         prepareAndHandleAddNewTuning()
     }
