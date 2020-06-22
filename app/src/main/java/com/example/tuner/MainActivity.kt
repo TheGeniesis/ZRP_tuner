@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setFrequencyValue(value: String) {
-       findViewById<TextView>(R.id.freq_label).text = value
+        findViewById<TextView>(R.id.freq_label).text = value
     }
 
     fun startFrequencyChecker() {
