@@ -2,10 +2,12 @@ package com.example.tuner
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_tune_list.*
+import kotlinx.android.synthetic.main.tune_list_element.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +20,6 @@ class MainActivity : AppCompatActivity() {
 
         val list = getList(this)
         setTuneTexts(list)
-
 
 
         button.setOnClickListener {
