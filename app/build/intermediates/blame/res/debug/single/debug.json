@@ -16,12 +16,12 @@
         "source": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\src\\main\\res\\drawable-hdpi\\tunerpointer.png"
     },
     {
-        "merged": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_select_element.xml.flat",
-        "source": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\src\\main\\res\\layout\\activity_select_element.xml"
-    },
-    {
         "merged": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_bar.png.flat",
         "source": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\src\\main\\res\\drawable-ldpi\\bar.png"
+    },
+    {
+        "merged": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_select_element.xml.flat",
+        "source": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\src\\main\\res\\layout\\activity_select_element.xml"
     },
     {
         "merged": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_log0.png.flat",
@@ -84,12 +84,12 @@
         "source": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\src\\main\\res\\layout\\activity_add_edit.xml"
     },
     {
-        "merged": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\build\\intermediates\\res\\merged\\debug\\layout-xhdpi_activity_add_edit.xml.flat",
-        "source": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\src\\main\\res\\layout-xhdpi\\activity_add_edit.xml"
-    },
-    {
         "merged": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_log0.png.flat",
         "source": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\src\\main\\res\\drawable-xhdpi\\log0.png"
+    },
+    {
+        "merged": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\build\\intermediates\\res\\merged\\debug\\layout-xhdpi_activity_add_edit.xml.flat",
+        "source": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\src\\main\\res\\layout-xhdpi\\activity_add_edit.xml"
     },
     {
         "merged": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_bar.png.flat",
@@ -112,12 +112,12 @@
         "source": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxxhdpi_activity_tune_list.xml.flat",
-        "source": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\src\\main\\res\\layout-xxxhdpi\\activity_tune_list.xml"
-    },
-    {
         "merged": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxhdpi_activity_main.xml.flat",
         "source": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\src\\main\\res\\layout-xxhdpi\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxxhdpi_activity_tune_list.xml.flat",
+        "source": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\src\\main\\res\\layout-xxxhdpi\\activity_tune_list.xml"
     },
     {
         "merged": "C:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_bg.png.flat",
