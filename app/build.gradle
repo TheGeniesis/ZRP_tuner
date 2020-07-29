@@ -3,13 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.0"
 
     defaultConfig {
         applicationId "com.example.tuner"
-        minSdkVersion 16
-        targetSdkVersion 29
+        minSdkVersion 21
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -43,4 +43,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+//    implementation("io.reactivex.rxjava3:rxkotlin:3.x.y")
+//    implementation 'io.reactivex.rxjava2:rxkotlin:x.y.z'
+//    api 'io.reactivex.rxjava2:rxjava:2.2.0
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
 }
