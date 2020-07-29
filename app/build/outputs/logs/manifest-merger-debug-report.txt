@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-94:12
-INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-94:12
-INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-94:12
-INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-94:12
+ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-26:12
 MERGED from [com.github.GrenderG:Toasty:1.4.2] C:\Users\welon\.gradle\caches\transforms-2\files-2.1\7aa7e8844dbd5c73a0ba20acca323c32\jetified-Toasty-1.4.2\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\welon\.gradle\caches\transforms-2\files-2.1\a85c36796b93d2c1dbec61a982cb6251\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.core:core-ktx:1.2.0] C:\Users\welon\.gradle\caches\transforms-2\files-2.1\b61d36b4fb7b9efe2060aa08811d060c\jetified-core-ktx-1.2.0\AndroidManifest.xml:2:1-9:12
@@ -28,141 +28,25 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\welon\.gradle\ca
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\welon\.gradle\caches\transforms-2\files-2.1\633f027a488c0593f798952fa522c859\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\welon\.gradle\caches\transforms-2\files-2.1\4359a3383df7153453095f5ca8c53e74\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\welon\.gradle\caches\transforms-2\files-2.1\729600bc23999407bd36e279a756a69a\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-94:12
-INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-94:12
-INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-94:12
+INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-26:12
 	package
 		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:3:5-32
 		INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-94:12
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-26:12
 		INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-94:12
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:1-26:12
 		INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:2:11-69
-supports-screens
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:6:5-14:48
-	android:compatibleWidthLimitDp
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:14:9-45
-	android:largeScreens
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:8:9-36
-	android:smallScreens
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:11:9-36
-	android:requiresSmallestWidthDp
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:13:9-46
-	android:normalScreens
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:9:9-37
-	android:xlargeScreens
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:12:9-37
-	android:resizeable
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:10:9-34
-	android:anyDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:7:9-34
-compatible-screens
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:17:5-71:26
-screen#small+ldpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:20:9-22:42
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:21:13-41
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:22:13-39
-screen#small+mdpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:23:9-25:42
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:24:13-41
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:25:13-39
-screen#small+hdpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:26:9-28:42
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:27:13-41
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:28:13-39
-screen#small+xhdpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:29:9-31:42
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:30:13-42
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:31:13-39
-screen#normal+ldpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:33:9-35:43
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:34:13-41
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:35:13-40
-screen#normal+mdpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:36:9-38:43
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:37:13-41
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:38:13-40
-screen#normal+hdpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:39:9-41:43
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:40:13-41
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:41:13-40
-screen#normal+xhdpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:42:9-44:43
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:43:13-42
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:44:13-40
-screen#large+ldpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:46:9-48:42
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:47:13-41
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:48:13-39
-screen#large+mdpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:49:9-51:42
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:50:13-41
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:51:13-39
-screen#large+hdpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:52:9-54:42
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:53:13-41
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:54:13-39
-screen#large+xhdpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:55:9-57:42
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:56:13-42
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:57:13-39
-screen#xlarge+ldpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:59:9-61:43
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:60:13-41
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:61:13-40
-screen#xlarge+mdpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:62:9-64:43
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:63:13-41
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:64:13-40
-screen#xlarge+hdpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:65:9-67:43
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:66:13-41
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:67:13-40
-screen#xlarge+xhdpi
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:68:9-70:43
-	android:screenDensity
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:69:13-42
-	android:screenSize
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:70:13-40
 application
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:74:5-92:19
+ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:6:5-24:19
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\welon\.gradle\caches\transforms-2\files-2.1\786e4a9b49a6fa0d52b9b058b07c66fd\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\welon\.gradle\caches\transforms-2\files-2.1\786e4a9b49a6fa0d52b9b058b07c66fd\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
 MERGED from [androidx.core:core:1.2.0] C:\Users\welon\.gradle\caches\transforms-2\files-2.1\7ebbd828a0332ce53b13c092b4ec198f\core-1.2.0\AndroidManifest.xml:24:5-89
@@ -172,47 +56,47 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\we
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.2.0] C:\Users\welon\.gradle\caches\transforms-2\files-2.1\7ebbd828a0332ce53b13c092b4ec198f\core-1.2.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:79:9-35
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:11:9-35
 	android:label
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:77:9-41
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:9:9-41
 	android:roundIcon
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:78:9-54
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:10:9-54
 	android:icon
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:76:9-43
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:8:9-43
 	android:allowBackup
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:75:9-35
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:7:9-35
 	android:theme
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:80:9-40
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:12:9-40
 activity#com.example.tuner.AddEditActivity
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:81:9-62
+ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:13:9-62
 	android:name
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:81:19-50
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:13:19-50
 activity#com.example.tuner.SelectElement
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:82:9-51
+ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:14:9-51
 	android:name
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:82:19-48
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:14:19-48
 activity#com.example.tuner.TuneList
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:83:9-46
+ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:15:9-46
 	android:name
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:83:19-43
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:15:19-43
 activity#com.example.tuner.TitleBar
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:84:9-46
+ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:16:9-46
 	android:name
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:84:19-43
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:16:19-43
 activity#com.example.tuner.MainActivity
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:85:9-91:20
+ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:17:9-23:20
 	android:name
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:85:19-47
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:17:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:86:13-90:29
+ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:18:13-22:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:87:17-69
+ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:19:17-69
 	android:name
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:87:25-66
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:19:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:89:17-77
+ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:21:17-77
 	android:name
-		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:89:27-74
+		ADDED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml:21:27-74
 uses-sdk
 INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\welon\OneDrive\Dokumenty\GitHub\ZRP_tuner\app\src\main\AndroidManifest.xml

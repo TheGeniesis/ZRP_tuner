@@ -1,4 +1,4 @@
-#Tue Jun 30 20:14:55 CEST 2020
+#Mon Jul 20 15:53:15 CEST 2020
 base.0=C\:\\Users\\welon\\OneDrive\\Dokumenty\\GitHub\\ZRP_tuner\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
