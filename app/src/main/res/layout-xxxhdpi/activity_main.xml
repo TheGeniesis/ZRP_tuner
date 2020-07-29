@@ -20,15 +20,13 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginRight="37dp"
         android:alpha="0.1"
         android:contentDescription="@string/halfsquare"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintHorizontal_bias="0.974"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@+id/include"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.425"
         app:srcCompat="@drawable/tunesub" />
 
     <ImageView
@@ -77,7 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.561"
+        app:layout_constraintVertical_bias="0.574"
         app:srcCompat="@drawable/plusminus" />
 
     <ImageView
