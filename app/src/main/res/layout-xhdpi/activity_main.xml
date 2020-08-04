@@ -28,7 +28,6 @@
         android:layout_marginEnd="38dp"
         android:layout_marginRight="38dp"
         android:alpha="0.1"
-        android:contentDescription="@string/halfsquare"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent"
