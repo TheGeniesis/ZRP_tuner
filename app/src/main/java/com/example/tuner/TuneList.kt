@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_title_bar.*
 
 class TuneList : AppCompatActivity() {
 
@@ -15,7 +13,7 @@ class TuneList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tune_list)
 
-        title_bar.text = "Tunes";
+       // title_bar.text = "Tunes";
         prepareAndHandleList(this)
         prepareAndHandleAddNewTuning()
     }

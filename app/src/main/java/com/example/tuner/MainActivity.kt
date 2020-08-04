@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.activity_title_bar.*
 import java.util.concurrent.Executors
 
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         requestAudioPermissions()
 
-        title_bar.text = "SmoothTuner";
+
         button.setOnClickListener {
             val intent = Intent(this, TuneList::class.java)
             startActivity(intent)
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setFrequencyValue(value: String) {
-       findViewById<TextView>(R.id.freq_label).text = value
+        findViewById<TextView>(R.id.freq_label).text = value
     }
 
     fun startFrequencyChecker() {
