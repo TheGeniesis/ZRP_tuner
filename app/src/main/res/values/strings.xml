@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">tuner</string>
+    <string name="change_tuning">Change Tuning</string>
+    <string name="add_tune">add tune</string>
 </resources>

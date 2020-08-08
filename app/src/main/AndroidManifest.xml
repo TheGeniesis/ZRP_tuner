@@ -15,7 +15,6 @@
         <activity android:name=".AddEditActivity"></activity>
         <activity android:name=".SelectElement" />
         <activity android:name=".TuneList" />
-        <activity android:name=".TitleBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -5,7 +5,7 @@ import android.content.Context
 class DatabaseFixture
 {
     fun createBasicDataInDB(context: Context) {
-//        DbInstrumentHandler(context).drop()
+        //DbInstrumentHandler(context).drop()
         if (DbInstrumentHandler(context).getAll().isNotEmpty()) {
             return
         }

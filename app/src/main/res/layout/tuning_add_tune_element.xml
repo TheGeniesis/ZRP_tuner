@@ -11,6 +11,7 @@
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="180dp"
+        android:textColor="#FFEBE6"
         />
 
     <Button
@@ -18,7 +19,6 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
         android:layout_marginTop="50dp"
         android:text="x" />
 
@@ -27,7 +27,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="200dp"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp"
+        android:textColor="#FFEBE6"
+        />
 
 </RelativeLayout>
