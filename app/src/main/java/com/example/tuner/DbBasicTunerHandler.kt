@@ -120,6 +120,7 @@ class DbBasicTunerHandler(var context: Context) :
 
     fun setTheHighestOrder(id: Int) {
         val db = this.writableDatabase
+
         try {
             db.execSQL(
                 "UPDATE ${Companion.TABLE_NAME} " +
@@ -130,7 +131,7 @@ class DbBasicTunerHandler(var context: Context) :
                         "DESC LIMIT 1)+1" +
                         ") " +
                         "WHERE id = ?",
-                arrayOf(id.toString())
+                arrayOf(id)
             )
 
         } catch (e: SQLiteException) {
@@ -145,8 +146,8 @@ class DbBasicTunerHandler(var context: Context) :
         try {
             cursor = db.rawQuery(
                 "SELECT * FROM ${Companion.TABLE_NAME} WHERE custom_order = (" +
-                        "SELECT MAX(custom_order) as co " +
-                        " FROM ${Companion.TABLE_NAME} " +
+                        "SELECT MAX(tco.custom_order) as co " +
+                        " FROM ${Companion.TABLE_NAME} tco" +
                         " ORDER BY co DESC " +
                         " LIMIT 1" +
                         ") ",
@@ -235,6 +236,7 @@ class DbBasicTunerHandler(var context: Context) :
         var tune10: Int?
 
         if (cursor.moveToFirst()) {
+
             while (!cursor.isAfterLast) {
                 id = cursor.getInt(cursor.getColumnIndex(Companion.COL_ID))
                 name = cursor.getString(cursor.getColumnIndex(Companion.COL_NAME))

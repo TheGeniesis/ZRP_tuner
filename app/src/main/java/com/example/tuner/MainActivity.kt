@@ -1,15 +1,26 @@
 package com.example.tuner
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_tune_list.*
-import kotlinx.android.synthetic.main.tune_list_element.*
+import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.activity_title_bar.*
+import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
+
+    private var mAudioProcessor: AudioProcessor? = null
+    private val mExecutor =
+        Executors.newSingleThreadExecutor()
+    private val MY_PERMISSIONS_RECORD_AUDIO = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +32,89 @@ class MainActivity : AppCompatActivity() {
         val list = getList(this)
         setTuneTexts(list)
 
-
+        requestAudioPermissions()
         button.setOnClickListener {
             val intent = Intent(this, TuneList::class.java)
             startActivity(intent)
+        }
+    }
+
+    fun setFrequencyValue(value: String) {
+        findViewById<TextView>(R.id.freq_label).text = value
+    }
+
+    fun startFrequencyChecker() {
+        // init audio processor
+        mAudioProcessor = AudioProcessor()
+        // set context to be able to change frequency value in TextView
+        mAudioProcessor!!.setContext(this)
+        mAudioProcessor!!.init()
+        mAudioProcessor!!.setPitchDetectionListener(object : AudioProcessor.PitchDetectionListener {
+            override fun onPitchDetected(freq: Float, avgIntensity: Double) {
+                // Listener - call when sound is louder than moment ago
+                // TODO compare frequency with music note
+            }
+        })
+        // run frequency listener
+        mExecutor.execute(mAudioProcessor)
+    }
+
+    private fun requestAudioPermissions() {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.RECORD_AUDIO
+            )
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            //When permission is not granted by user, show them message why this permission is needed.
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.RECORD_AUDIO
+                )
+            ) {
+                Toast.makeText(this, "Please grant permissions to record audio", Toast.LENGTH_LONG)
+                    .show()
+
+                //Give user option to still opt-in the permissions
+                ActivityCompat.requestPermissions(
+                    this, arrayOf(Manifest.permission.RECORD_AUDIO),
+                    MY_PERMISSIONS_RECORD_AUDIO
+                )
+            } else {
+                // Show user dialog to grant permission to record audio
+                ActivityCompat.requestPermissions(
+                    this, arrayOf(Manifest.permission.RECORD_AUDIO),
+                    MY_PERMISSIONS_RECORD_AUDIO
+                )
+            }
+        } else if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.RECORD_AUDIO
+            )
+            == PackageManager.PERMISSION_GRANTED
+        ) {
+            //Go ahead with recording audio now
+            startFrequencyChecker()
+        }
+    }
+
+    //Handling request permission callback
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            MY_PERMISSIONS_RECORD_AUDIO -> {
+                if (grantResults.size > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                ) {
+                    // permission was granted, yay!
+                    startFrequencyChecker()
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast.makeText(this, "Permissions Denied to record audio", Toast.LENGTH_LONG)
+                        .show()
+                }
+                return
+            }
         }
     }
 
@@ -41,6 +131,7 @@ class MainActivity : AppCompatActivity() {
             tuning.id,
             tuning.name,
             tuning.customTuning,
+            tuning.instrumentId,
             if (tuning.tune1 !== null) tuneResult.find { it.id == tuning.tune1 }!!.name else null,
             if (tuning.tune2 !== null) tuneResult.find { it.id == tuning.tune2 }!!.name else null,
             if (tuning.tune3 !== null) tuneResult.find { it.id == tuning.tune3 }!!.name else null,

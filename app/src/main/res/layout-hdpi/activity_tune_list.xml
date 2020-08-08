@@ -24,7 +24,9 @@
         android:id="@+id/tune_list"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:layout_marginTop="150dp" />
+        android:layout_marginTop="150dp"
+        android:cacheColorHint="#000000"
+        />
 
     <Button
         android:id="@+id/add_new_tuning"
