@@ -8,7 +8,6 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_add_edit.*
-import kotlin.system.exitProcess
 
 class AddEditActivity : AppCompatActivity() {
 
@@ -192,7 +191,7 @@ class AddEditActivity : AppCompatActivity() {
 
         tuningOption.adapter = ArrayAdapter(
             context,
-            android.R.layout.simple_list_item_1,
+            R.layout.row,
             tuneList
         )
     }
@@ -202,7 +201,7 @@ class AddEditActivity : AppCompatActivity() {
 
         instrumentOption.adapter = ArrayAdapter(
             this,
-            android.R.layout.simple_list_item_1,
+            R.layout.row,
             instruments
         )
         instrumentOption.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {

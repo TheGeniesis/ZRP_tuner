@@ -34,7 +34,7 @@ class TuneList : AppCompatActivity() {
         val instruments = DbInstrumentHandler(this).getAll()
         option.adapter = ArrayAdapter(
             this,
-            android.R.layout.simple_list_item_1,
+            R.layout.row,
             instruments
         )
         option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
