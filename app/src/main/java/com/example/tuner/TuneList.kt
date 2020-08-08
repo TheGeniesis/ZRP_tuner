@@ -37,6 +37,7 @@ class TuneList : AppCompatActivity() {
             android.R.layout.simple_list_item_1,
             instruments
         )
+
         option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 option.setSelection(instruments.first().id)
@@ -70,6 +71,7 @@ class TuneList : AppCompatActivity() {
                         tuning.id,
                         tuning.name,
                         tuning.customTuning,
+                        tuning.instrumentId,
                         if (tuning.tune1 !== null) tuneResult.find { it.id == tuning.tune1 }!!.name else null,
                         if (tuning.tune2 !== null) tuneResult.find { it.id == tuning.tune2 }!!.name else null,
                         if (tuning.tune3 !== null) tuneResult.find { it.id == tuning.tune3 }!!.name else null,

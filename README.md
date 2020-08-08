@@ -1,8 +1,14 @@
-## This file must *NOT* be checked into Version Control Systems,
-# as it contains information specific to your local configuration.
-#
-# Location of the SDK. This is only used by Gradle.
-# For customization when using a Version Control System, please read the
-# header note.
-#Mon May 18 19:34:19 CEST 2020
-sdk.dir = /home/greg/Android/Sdk
+# Tuner
+
+Application to tune guitar
+
+## TroubleShooting
+
+You may add file `local.properties` with path to your sdk
+
+[more info](https://stackoverflow.com/questions/27620262/sdk-location-not-found-define-location-with-sdk-dir-in-the-local-properties-fil)
+
+For linux:
+```txt
+sdk.dir = ~/Android/Sdk
+```

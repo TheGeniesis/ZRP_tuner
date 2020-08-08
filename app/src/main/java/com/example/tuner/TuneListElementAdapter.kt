@@ -42,16 +42,15 @@ class TuneListElementAdapter(
         val chooseButton = rowView.findViewById(R.id.tuning_list_element_choose_button) as Button
 
         chooseButton.setOnClickListener {
+
             DbBasicTunerHandler(context).setTheHighestOrder(dataSource[position].id!!)
+            DbInstrumentHandler(context).setTheHighestOrder(dataSource[position].instrumentId)
 
             val intent = Intent(context, MainActivity::class.java)
             context.startActivity(intent)
         }
         val deleteButton =
             rowView.findViewById(R.id.tuning_list_element_delete_button) as Button
-
-
-
 
         deleteButton.setOnClickListener {
             if (dataSource[position].id !== null) {

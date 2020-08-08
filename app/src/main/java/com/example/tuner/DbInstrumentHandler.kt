@@ -20,7 +20,6 @@ class DbInstrumentHandler(var context: Context) :
         this.close()
         context.openOrCreateDatabase(DATABASE_NAME, Context.MODE_PRIVATE, null)
         this.close()
-
     }
 
     fun create() {
@@ -30,7 +29,8 @@ class DbInstrumentHandler(var context: Context) :
     override fun onCreate(db: SQLiteDatabase?) {
         val createTable = "CREATE TABLE IF NOT EXISTS " + Companion.TABLE_NAME + " (" +
                 Companion.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                Companion.COL_NAME + " VARCHAR(255))"
+                Companion.COL_NAME + " VARCHAR(255), " +
+                Companion.COL_ORDER + " INT(9))"
         db?.execSQL(createTable)
     }
 
@@ -43,6 +43,7 @@ class DbInstrumentHandler(var context: Context) :
         val cv = ContentValues()
         cv.put(Companion.COL_ID, instrumentModel.id)
         cv.put(Companion.COL_NAME, instrumentModel.name)
+        cv.put(Companion.COL_ORDER, instrumentModel.order)
         val result = db.insert(Companion.TABLE_NAME, null, cv)
         if (!silentMode) {
             if (result == (-1).toLong()) {
@@ -54,25 +55,74 @@ class DbInstrumentHandler(var context: Context) :
         db.close()
     }
 
+    fun getCurrentInstrument(): InstrumentModel? {
+        val db = this.readableDatabase
+        var cursor: Cursor? = null
+        try {
+            cursor = db.rawQuery(
+                "SELECT * FROM ${Companion.TABLE_NAME} WHERE custom_order = (" +
+                        "SELECT MAX(custom_order) as co " +
+                        " FROM ${Companion.TABLE_NAME} " +
+                        " ORDER BY co DESC " +
+                        " LIMIT 1" +
+                        ") ",
+                null
+            )
+        } catch (e: SQLiteException) {
+            Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
+        }
+
+        return cursor?.let { getResult(it).first() }
+    }
+
+    fun setTheHighestOrder(id: Int) {
+        val db = this.writableDatabase
+        try {
+            db.execSQL(
+                "UPDATE ${Companion.TABLE_NAME} " +
+                        "SET custom_order=(" +
+                        "(SELECT MAX(custom_order) as co " +
+                        "FROM ${Companion.TABLE_NAME} " +
+                        "ORDER BY co " +
+                        "DESC LIMIT 1)+1" +
+                        ") " +
+                        "WHERE id = ?",
+                arrayOf(id.toString())
+            )
+
+        } catch (e: SQLiteException) {
+            Toasty.error(context, "Failed", Toast.LENGTH_SHORT).show()
+        }
+        db.close()
+    }
+
     fun getAll(): ArrayList<InstrumentModel> {
-        val instruments = ArrayList<InstrumentModel>()
 
         val db = this.writableDatabase
 
         var cursor: Cursor? = null
         try {
-            cursor = db.rawQuery("SELECT * FROM ${Companion.TABLE_NAME}", null)
+            cursor = db.rawQuery("SELECT * FROM ${Companion.TABLE_NAME} ORDER by custom_order DESC", null)
+            return getResult(cursor)
         } catch (e: SQLiteException) {
         }
 
+        return ArrayList()
+    }
+
+    private fun getResult(cursor: Cursor): ArrayList<InstrumentModel> {
+        val instruments = ArrayList<InstrumentModel>()
+
         var id: Int
         var name: String
+        var order: Int
         if (cursor!!.moveToFirst()) {
             while (!cursor.isAfterLast) {
                 id = cursor.getInt(cursor.getColumnIndex(Companion.COL_ID))
                 name = cursor.getString(cursor.getColumnIndex(Companion.COL_NAME))
+                order = cursor.getInt(cursor.getColumnIndex(Companion.COL_ORDER))
 
-                instruments.add(InstrumentModel(id, name))
+                instruments.add(InstrumentModel(id, name, order))
                 cursor.moveToNext()
             }
         }
@@ -85,5 +135,6 @@ class DbInstrumentHandler(var context: Context) :
         const val TABLE_NAME = "Instrument"
         const val COL_ID = "id"
         const val COL_NAME = "name"
+        const val COL_ORDER = "custom_order"
     }
 }
