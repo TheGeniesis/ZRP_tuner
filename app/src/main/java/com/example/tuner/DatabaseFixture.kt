@@ -10,12 +10,12 @@ class DatabaseFixture
             return
         }
 //        Create data in Instrument table
-        var instrument = InstrumentModel(1, InstrumentEnum.GUITAR);
+        var instrument = InstrumentModel(1, InstrumentEnum.GUITAR, 0);
         val handler = DbInstrumentHandler(context)
         DbInstrumentHandler(context).create()
         handler.insertData(instrument, true)
 
-        instrument = InstrumentModel(2, InstrumentEnum.BASS);
+        instrument = InstrumentModel(2, InstrumentEnum.BASS, 1);
         handler.insertData(instrument, true)
 
 

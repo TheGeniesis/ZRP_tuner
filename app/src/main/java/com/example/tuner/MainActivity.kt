@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
 
         requestAudioPermissions()
 
-
         button.setOnClickListener {
             val intent = Intent(this, TuneList::class.java)
             startActivity(intent)
@@ -133,6 +132,7 @@ class MainActivity : AppCompatActivity() {
             tuning.id,
             tuning.name,
             tuning.customTuning,
+            tuning.instrumentId,
             if (tuning.tune1 !== null) tuneResult.find { it.id == tuning.tune1 }!!.name else null,
             if (tuning.tune2 !== null) tuneResult.find { it.id == tuning.tune2 }!!.name else null,
             if (tuning.tune3 !== null) tuneResult.find { it.id == tuning.tune3 }!!.name else null,

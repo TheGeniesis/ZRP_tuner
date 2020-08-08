@@ -4,6 +4,7 @@ class TunerListView(
         id: Int?,
         name: String,
         customTuning: Boolean,
+        instrumentId: Int,
         tune1: String?,
         tune2: String?,
         tune3: String?,
@@ -29,6 +30,7 @@ class TunerListView(
         var tune10: String? = null
         var name: String = ""
         var customTuning: Boolean = false
+        var instrumentId: Int = 0
 
         init {
             this.id = id
@@ -44,6 +46,7 @@ class TunerListView(
             this.tune8 = tune8
             this.tune9 = tune9
             this.tune10 = tune10
+            this.instrumentId = instrumentId
         }
 
     fun tuning (): String
@@ -75,5 +78,9 @@ class TunerListView(
     fun id(): Int?
     {
         return id
+    }
+    fun instrumentId(): Int?
+    {
+        return instrumentId
     }
 }
