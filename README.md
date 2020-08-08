@@ -5,4 +5,4 @@
 # For customization when using a Version Control System, please read the
 # header note.
 #Mon May 18 19:34:19 CEST 2020
-sdk.dir=C\:\\Users\\welon\\AppData\\Local\\Android\\Sdk
+sdk.dir = /home/greg/Android/Sdk
