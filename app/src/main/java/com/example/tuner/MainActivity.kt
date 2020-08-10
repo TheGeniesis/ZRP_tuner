@@ -4,7 +4,9 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,9 +14,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
+import kotlin.math.abs
 
 class MainActivity : AppCompatActivity() {
 
+    private var list : TunerListView? = null
     private var mAudioProcessor: AudioProcessor? = null
     private val mExecutor =
         Executors.newSingleThreadExecutor()
@@ -27,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         // for first setup we need to create some basic data
         DatabaseFixture().createBasicDataInDB(this)
 
-        val list = getList(this)
+        list = getList(this)
         setTuneTexts(list)
 
         requestAudioPermissions()
@@ -43,18 +47,150 @@ class MainActivity : AppCompatActivity() {
 
     fun startFrequencyChecker() {
         // init audio processor
+        val context = this
         mAudioProcessor = AudioProcessor()
         // set context to be able to change frequency value in TextView
         mAudioProcessor!!.setContext(this)
         mAudioProcessor!!.init()
         mAudioProcessor!!.setPitchDetectionListener(object : AudioProcessor.PitchDetectionListener {
             override fun onPitchDetected(freq: Float, avgIntensity: Double) {
-                // Listener - call when sound is louder than moment ago
-                // TODO compare frequency with music note
+                val tuneResult = DbTuneHandler(context).getAll()
+                val tuning = DbBasicTunerHandler(context).getCurrentTuning() ?: return
+                var curr: TuneModel? = null
+                var next: TuneModel? = null
+
+                if (tuning.tune1 !== null) {
+                    curr = tuneResult.find { it.id == tuning.tune1 }
+                }
+
+
+                if (tuning.tune2 !== null) {
+                    if (curr == null) {
+                        curr = tuneResult.find { it.id == tuning.tune2 }
+                    } else {
+                        next = tuneResult.find { it.id == tuning.tune2 }
+                    }
+                }
+
+                tryToSetTune(curr, next, freq)
+
+                if (tuning.tune3 !== null) {
+                    if (curr == null) {
+                        curr = tuneResult.find { it.id == tuning.tune3 }
+                    } else if (next == null) {
+                        next = tuneResult.find { it.id == tuning.tune3 }
+                    } else {
+                        next = null
+                        curr = tuneResult.find { it.id == tuning.tune3 }
+                    }
+                }
+
+                tryToSetTune(curr, next, freq)
+
+                if (tuning.tune4 !== null) {
+                    if (curr == null) {
+                        curr = tuneResult.find { it.id == tuning.tune4 }
+                    } else if (next == null) {
+                        next = tuneResult.find { it.id == tuning.tune4 }
+                    } else {
+                        next = null
+                        curr = tuneResult.find { it.id == tuning.tune4 }
+                    }
+                }
+
+                tryToSetTune(curr, next, freq)
+
+                if (tuning.tune5 !== null) {
+                    if (curr == null) {
+                        curr = tuneResult.find { it.id == tuning.tune5 }
+                    } else if (next == null) {
+                        next = tuneResult.find { it.id == tuning.tune5 }
+                    } else {
+                        next = null
+                        curr = tuneResult.find { it.id == tuning.tune5 }
+                    }
+                }
+
+                tryToSetTune(curr, next, freq)
+
+                if (tuning.tune6 !== null) {
+                    if (curr == null) {
+                        curr = tuneResult.find { it.id == tuning.tune6 }
+                    } else if (next == null) {
+                        next = tuneResult.find { it.id == tuning.tune6 }
+                    } else {
+                        next = null
+                        curr = tuneResult.find { it.id == tuning.tune6 }
+                    }
+                }
+
+                tryToSetTune(curr, next, freq)
+
+                if (curr!!.exactFrequency < freq ) {
+                    selectTune(curr)
+                }
             }
         })
         // run frequency listener
         mExecutor.execute(mAudioProcessor)
+    }
+    
+    private fun tryToSetTune(curr: TuneModel?, next: TuneModel?, freq: Float)
+    {
+
+        resetTuneColor()
+        if (curr!!.exactFrequency > freq && next == null) {
+            selectTune(curr)
+
+            return
+        }
+
+        if (curr != null && next != null && curr.exactFrequency < freq && next.exactFrequency > freq) {
+            val diff = abs(next.exactFrequency - curr.exactFrequency) / 2;
+            if ((next.exactFrequency - freq) > diff) {
+                selectTune(curr)
+            } else {
+                selectTune(next)
+            }
+        }
+    }
+
+    private fun resetTuneColor () {
+        val notSelectedColor = "black"
+        findViewById<TextView>(R.id.tune_block_tune_1).setTextColor(Color.parseColor(notSelectedColor))
+        findViewById<TextView>(R.id.tune_block_tune_2).setTextColor(Color.parseColor(notSelectedColor))
+        findViewById<TextView>(R.id.tune_block_tune_3).setTextColor(Color.parseColor(notSelectedColor))
+        findViewById<TextView>(R.id.tune_block_tune_4).setTextColor(Color.parseColor(notSelectedColor))
+        findViewById<TextView>(R.id.tune_block_tune_5).setTextColor(Color.parseColor(notSelectedColor))
+        findViewById<TextView>(R.id.tune_block_tune_6).setTextColor(Color.parseColor(notSelectedColor))
+        findViewById<TextView>(R.id.tune_block_tune_7).setTextColor(Color.parseColor(notSelectedColor))
+        findViewById<TextView>(R.id.tune_block_tune_8).setTextColor(Color.parseColor(notSelectedColor))
+        findViewById<TextView>(R.id.tune_block_tune_9).setTextColor(Color.parseColor(notSelectedColor))
+        findViewById<TextView>(R.id.tune_block_tune_10).setTextColor(Color.parseColor(notSelectedColor))
+    }
+
+    private fun selectTune(curr: TuneModel) {
+        val selectedColor = "#d8d8d8"
+        val elem = getFrequencyTune(curr)
+        if (elem != null) {
+            findViewById<TextView>(elem).setTextColor(Color.parseColor(selectedColor))
+        }
+    }
+
+    private fun getFrequencyTune(curr: TuneModel): Int?
+    {
+        if (curr.name == list!!.tune1 ) { return R.id.tune_block_tune_1}
+        if (curr.name == list!!.tune2 ) { return R.id.tune_block_tune_2}
+        if (curr.name == list!!.tune3 ) { return R.id.tune_block_tune_3}
+        if (curr.name == list!!.tune4 ) { return R.id.tune_block_tune_4}
+        if (curr.name == list!!.tune5 ) { return R.id.tune_block_tune_5}
+        if (curr.name == list!!.tune6 ) { return R.id.tune_block_tune_6}
+        if (curr.name == list!!.tune7 ) { return R.id.tune_block_tune_7}
+        if (curr.name == list!!.tune8 ) { return R.id.tune_block_tune_8}
+        if (curr.name == list!!.tune9 ) { return R.id.tune_block_tune_9}
+        if (curr.name == list!!.tune10 ) { return R.id.tune_block_tune_10}
+
+        return null
     }
 
     private fun requestAudioPermissions() {
@@ -119,7 +255,7 @@ class MainActivity : AppCompatActivity() {
     private fun getList(context: Context): TunerListView?
     {
         val tuneResult = DbTuneHandler(context).getAll()
-        val tuning = DbBasicTunerHandler(this).getCurrentTuning()
+        val tuning = DbBasicTunerHandler(context).getCurrentTuning()
 
         if (tuning === null) {
             return null
