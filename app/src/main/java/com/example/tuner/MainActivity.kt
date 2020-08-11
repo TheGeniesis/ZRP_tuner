@@ -72,7 +72,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                tryToSetTune(curr, next, freq)
+                if (tryToSetTune(curr, next, freq))  {
+                    return
+                }
 
                 if (tuning.tune3 !== null) {
                     if (curr == null) {
@@ -85,7 +87,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                tryToSetTune(curr, next, freq)
+                if (tryToSetTune(curr, next, freq))  {
+                    return
+                }
 
                 if (tuning.tune4 !== null) {
                     if (curr == null) {
@@ -98,7 +102,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                tryToSetTune(curr, next, freq)
+                if (tryToSetTune(curr, next, freq)) {
+                    return
+                }
 
                 if (tuning.tune5 !== null) {
                     if (curr == null) {
@@ -111,7 +117,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                tryToSetTune(curr, next, freq)
+                if (tryToSetTune(curr, next, freq)) {
+                    return
+                }
 
                 if (tuning.tune6 !== null) {
                     if (curr == null) {
@@ -124,7 +132,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                tryToSetTune(curr, next, freq)
+                if (tryToSetTune(curr, next, freq)) {
+                    return
+                }
 
                 if (curr!!.exactFrequency < freq ) {
                     selectTune(curr)
@@ -135,24 +145,24 @@ class MainActivity : AppCompatActivity() {
         mExecutor.execute(mAudioProcessor)
     }
     
-    private fun tryToSetTune(curr: TuneModel?, next: TuneModel?, freq: Float)
+    private fun tryToSetTune(curr: TuneModel?, next: TuneModel?, freq: Float): Boolean
     {
 
         resetTuneColor()
         if (curr!!.exactFrequency > freq && next == null) {
-            selectTune(curr)
-
-            return
+            return selectTune(curr)
         }
 
         if (curr != null && next != null && curr.exactFrequency < freq && next.exactFrequency > freq) {
             val diff = abs(next.exactFrequency - curr.exactFrequency) / 2;
             if ((next.exactFrequency - freq) > diff) {
-                selectTune(curr)
+                return selectTune(curr)
             } else {
-                selectTune(next)
+                return selectTune(next)
             }
         }
+
+        return false
     }
 
     private fun resetTuneColor () {
@@ -169,12 +179,15 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tune_block_tune_10).setTextColor(Color.parseColor(notSelectedColor))
     }
 
-    private fun selectTune(curr: TuneModel) {
+    private fun selectTune(curr: TuneModel): Boolean {
         val selectedColor = "#d8d8d8"
         val elem = getFrequencyTune(curr)
         if (elem != null) {
             findViewById<TextView>(elem).setTextColor(Color.parseColor(selectedColor))
+
+            return true
         }
+        return false
     }
 
     private fun getFrequencyTune(curr: TuneModel): Int?
