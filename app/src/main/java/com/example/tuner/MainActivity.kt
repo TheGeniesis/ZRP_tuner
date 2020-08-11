@@ -63,6 +63,9 @@ class MainActivity : AppCompatActivity() {
                     curr = tuneResult.find { it.id == tuning.tune1 }
                 }
 
+                if (tryToSetTune(curr, next, freq))  {
+                    return
+                }
 
                 if (tuning.tune2 !== null) {
                     if (curr == null) {
@@ -136,19 +139,79 @@ class MainActivity : AppCompatActivity() {
                     return
                 }
 
-                if (curr!!.exactFrequency < freq ) {
-                    selectTune(curr)
+                if (tuning.tune7 !== null) {
+                    if (curr == null) {
+                        curr = tuneResult.find { it.id == tuning.tune7 }
+                    } else if (next == null) {
+                        next = tuneResult.find { it.id == tuning.tune7 }
+                    } else {
+                        next = null
+                        curr = tuneResult.find { it.id == tuning.tune7 }
+                    }
                 }
+
+                if (tryToSetTune(curr, next, freq)) {
+                    return
+                }
+
+                if (tuning.tune8 !== null) {
+                    if (curr == null) {
+                        curr = tuneResult.find { it.id == tuning.tune8 }
+                    } else if (next == null) {
+                        next = tuneResult.find { it.id == tuning.tune8 }
+                    } else {
+                        next = null
+                        curr = tuneResult.find { it.id == tuning.tune8 }
+                    }
+                }
+
+                if (tryToSetTune(curr, next, freq)) {
+                    return
+                }
+
+                if (tuning.tune9 !== null) {
+                    if (curr == null) {
+                        curr = tuneResult.find { it.id == tuning.tune9 }
+                    } else if (next == null) {
+                        next = tuneResult.find { it.id == tuning.tune9 }
+                    } else {
+                        next = null
+                        curr = tuneResult.find { it.id == tuning.tune9 }
+                    }
+                }
+
+                if (tryToSetTune(curr, next, freq)) {
+                    return
+                }
+
+                if (tuning.tune10 !== null) {
+                    if (curr == null) {
+                        curr = tuneResult.find { it.id == tuning.tune10 }
+                    } else if (next == null) {
+                        next = tuneResult.find { it.id == tuning.tune10 }
+                    } else {
+                        next = null
+                        curr = tuneResult.find { it.id == tuning.tune10 }
+                    }
+                }
+
+                if (tryToSetTune(curr, next, freq)) {
+                    return
+                }
+
+                if (next != null) {
+                    selectTune(next)
+                    return
+                }
+                selectTune(curr!!)
             }
         })
         // run frequency listener
         mExecutor.execute(mAudioProcessor)
     }
-    
+
     private fun tryToSetTune(curr: TuneModel?, next: TuneModel?, freq: Float): Boolean
     {
-
-        resetTuneColor()
         if (curr!!.exactFrequency > freq && next == null) {
             return selectTune(curr)
         }
@@ -183,6 +246,7 @@ class MainActivity : AppCompatActivity() {
         val selectedColor = "#d8d8d8"
         val elem = getFrequencyTune(curr)
         if (elem != null) {
+            resetTuneColor()
             findViewById<TextView>(elem).setTextColor(Color.parseColor(selectedColor))
 
             return true
