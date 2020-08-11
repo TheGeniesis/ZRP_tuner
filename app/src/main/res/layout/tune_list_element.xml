@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tune_list_element_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:textColor="#FFEBE6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tune_list_element_tuning" />
+
+    <TextView
+        android:id="@+id/tune_list_element_tuning"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="92dp"
+        android:textColor="#FFEBE6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/tuning_list_element_edit_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="52dp"
+        android:text="e"
+        app:layout_constraintTop_toBottomOf="@+id/tune_list_element_name"
+        tools:layout_editor_absoluteX="50dp" />
+
+    <Button
+        android:id="@+id/tuning_list_element_delete_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:text="x"
+        app:layout_constraintStart_toEndOf="@+id/tuning_list_element_edit_button"
+        tools:layout_editor_absoluteY="268dp" />
+
+    <Button
+        android:id="@+id/tuning_list_element_choose_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="124dp"
+        android:text="v"
+        app:layout_constraintStart_toEndOf="@+id/tuning_list_element_delete_button"
+        tools:layout_editor_absoluteY="92dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

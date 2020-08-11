@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tune_block_tune_1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="148dp"
+        app:layout_constraintEnd_toStartOf="@+id/tune_block_tune_2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#FFEBE6" />
+
+    <TextView
+        android:id="@+id/tune_block_tune_2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="148dp"
+        android:layout_toEndOf="@id/tune_block_tune_1"
+        app:layout_constraintEnd_toStartOf="@+id/tune_block_tune_3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#FFEBE6"
+        />
+
+    <TextView
+        android:id="@+id/tune_block_tune_3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="148dp"
+        android:layout_toEndOf="@id/tune_block_tune_2"
+        app:layout_constraintEnd_toStartOf="@+id/tune_block_tune_4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#FFEBE6"/>
+
+    <TextView
+        android:id="@+id/tune_block_tune_4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="148dp"
+        android:layout_toEndOf="@id/tune_block_tune_3"
+        app:layout_constraintEnd_toStartOf="@+id/tune_block_tune_5"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#FFEBE6"/>
+
+    <TextView
+        android:id="@+id/tune_block_tune_5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="148dp"
+        android:layout_toEndOf="@id/tune_block_tune_4"
+        app:layout_constraintEnd_toStartOf="@+id/tune_block_tune_6"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#FFEBE6"/>
+
+    <TextView
+        android:id="@+id/tune_block_tune_6"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="116dp"
+        android:layout_toEndOf="@id/tune_block_tune_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#FFEBE6" />
+
+    <TextView
+        android:id="@+id/tune_block_tune_7"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginEnd="12dp"
+        android:layout_toEndOf="@id/tune_block_tune_6"
+        app:layout_constraintEnd_toStartOf="@+id/tune_block_tune_8"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tune_block_tune_2"
+        android:textColor="#FFEBE6"/>
+
+    <TextView
+        android:id="@+id/tune_block_tune_8"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toEndOf="@id/tune_block_tune_7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tune_block_tune_9"
+        app:layout_constraintTop_toBottomOf="@+id/tune_block_tune_2"
+        android:textColor="#FFEBE6"/>
+
+    <TextView
+        android:id="@+id/tune_block_tune_9"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="4dp"
+        android:layout_toEndOf="@id/tune_block_tune_8"
+        app:layout_constraintEnd_toStartOf="@+id/tune_block_tune_10"
+        app:layout_constraintTop_toBottomOf="@+id/tune_block_tune_4"
+        android:textColor="#FFEBE6"/>
+
+    <TextView
+        android:id="@+id/tune_block_tune_10"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="172dp"
+        android:layout_toEndOf="@id/tune_block_tune_9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tune_block_tune_4"
+        android:textColor="#FFEBE6"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
