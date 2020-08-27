@@ -18,11 +18,29 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginStart="11dp"
-        android:layout_marginLeft="11dp"
+        android:layout_marginLeft="7dp"
         android:layout_marginTop="130dp"
         android:layout_marginEnd="323dp"
         android:layout_marginRight="323dp"
-        android:text="Category"
+        android:text="Instrument"
+        android:textColor="#FFEBE6" />
+
+    <TextView
+        android:id="@+id/note"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="185dp"
+        android:layout_marginEnd="324dp"
+        android:layout_marginRight="324dp"
+        android:text="Note"
         android:textColor="#FFEBE6" />
 
     <EditText
@@ -30,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="7dp"
         android:layout_marginLeft="61dp"
         android:layout_marginTop="74dp"
         android:autofillHints=""
@@ -47,13 +65,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="318dp"
-        android:layout_marginRight="318dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="323dp"
+        android:layout_marginRight="323dp"
         android:text="Tuning name"
         android:textColor="#FFEBE6" />
 
@@ -99,10 +118,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="162dp"
-        android:layout_marginEnd="218dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="205dp"
+        android:layout_marginEnd="214dp"
         android:backgroundTint="#FFEBE6" />
 
     <ListView
@@ -111,9 +130,11 @@
         android:layout_height="340dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="-4dp"
-        android:layout_marginLeft="-4dp"
-        android:layout_marginTop="206dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-3dp"
+        android:layout_marginLeft="-3dp"
+        android:layout_marginTop="206dp"
+        android:layout_marginBottom="145dp" />
 
     <Button
         android:id="@+id/go_back"
@@ -135,10 +156,12 @@
         android:layout_width="191dp"
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="204dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="#FFEBE6" />
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="212dp"
+        android:backgroundTint="#FFEBE6"
+        android:textAlignment="textStart"
+        />
 </RelativeLayout>

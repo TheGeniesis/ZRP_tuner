@@ -9,36 +9,36 @@
     <TextView
         android:id="@+id/tune_list_element_name"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
         android:textColor="#FFEBE6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tune_list_element_tuning" />
 
+
     <TextView
         android:id="@+id/tune_list_element_tuning"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="92dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="50dp"
         android:textColor="#FFEBE6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
     <Button
         android:id="@+id/tuning_list_element_edit_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginLeft="310dp"
+        android:layout_marginTop="25dp"
         android:text="e"
         app:layout_constraintBottom_toBottomOf="@+id/tune_list_element_tuning"
         app:layout_constraintTop_toTopOf="@+id/tune_list_element_tuning"
         tools:layout_editor_absoluteX="100dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop = "55dp"
+        android:alpha = "0.0"
 
         />
 
@@ -46,31 +46,46 @@
         android:id="@+id/tuning_list_element_delete_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="25dp"
         android:text="x"
         app:layout_constraintStart_toEndOf="@+id/tuning_list_element_edit_button"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="230dp"
-        android:layout_marginTop = "55dp"
-        />
+        android:alpha = "0.0"/>
 
     <Button
         android:id="@+id/tuning_list_element_choose_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="25dp"
+        android:alpha="0.0"
         android:text="v"
-        app:layout_constraintStart_toEndOf="@+id/tuning_list_element_delete_button"
-        android:layout_marginLeft="310dp"
-        android:layout_marginTop = "55dp"
-        android:alpha = "0.0"
-        />
+        app:layout_constraintStart_toEndOf="@+id/tuning_list_element_delete_button" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/choose"
-        android:layout_marginLeft="330dp"
-        android:layout_marginTop = "75dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="45dp"
+        app:srcCompat="@drawable/choose" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/delete"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="45dp"
         />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/edit"
+        android:layout_marginStart="329dp"
+        android:layout_marginTop="45dp"/>
 
 </RelativeLayout>

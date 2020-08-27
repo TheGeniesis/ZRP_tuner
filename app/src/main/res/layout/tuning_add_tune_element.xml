@@ -9,26 +9,29 @@
         android:id="@+id/tuning_add_tune_tune"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="180dp"
-        android:textColor="#FFEBE6"
-        />
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="313dp"
+        android:textColor="#FFEBE6" />
 
     <Button
         android:id="@+id/tuning_add_tune_delete_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginEnd="164dp"
         android:text="x" />
 
     <TextView
         android:id="@+id/tuning_add_tune_frequency"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="50dp"
-        android:textColor="#FFEBE6"
-        />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="122dp"
+        android:layout_marginEnd="239dp"
+        android:textColor="#FFEBE6" />
 
 </RelativeLayout>
