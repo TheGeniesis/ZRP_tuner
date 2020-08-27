@@ -15,8 +15,10 @@ import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
 import kotlin.math.abs
+import android.graphics.Matrix
 
 class MainActivity : AppCompatActivity() {
+
 
     private var list : TunerListView? = null
     private var mAudioProcessor: AudioProcessor? = null

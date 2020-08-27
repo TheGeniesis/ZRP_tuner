@@ -4,4 +4,6 @@
     android:layout_width="fill_parent"
     android:textSize="15sp"
     android:gravity="center"
-    android:textColor="#FFEBE6"/>
+    android:textColor="#FFEBE6"
+    android:background="#1D2540"
+    />
