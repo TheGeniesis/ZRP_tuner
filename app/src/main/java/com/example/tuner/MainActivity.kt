@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         Executors.newSingleThreadExecutor()
     private val MY_PERMISSIONS_RECORD_AUDIO = 1
     lateinit var pointer: ImageView
-    var deegreFrom = 90f
+    var deegreFrom = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +64,6 @@ class MainActivity : AppCompatActivity() {
         deegreFrom = angle
     }
 
-
     fun setFrequencyValue(value: String) {
         findViewById<TextView>(R.id.freq_label).text = value
     }
@@ -82,7 +81,6 @@ class MainActivity : AppCompatActivity() {
                 val tuning = DbBasicTunerHandler(context).getCurrentTuning() ?: return
                 var curr: TuneModel? = null
                 var next: TuneModel? = null
-                rotate(freq*0.2f)
                 if (tuning.tune1 !== null) {
                     curr = tuneResult.find { it.id == tuning.tune1 }
                 }
@@ -224,6 +222,17 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 if (next != null) {
+                    val max = next.exactFrequency + 90
+                    val stop = freq - next.exactFrequency
+                    val percent = stop * 0.01/max
+                    var angle = percent * 90/0.01
+
+                    if (angle > 90) {
+                        angle = 90.0
+                    }
+
+                    rotate(angle.toFloat())
+
                     selectTune(next)
                     return
                 }
@@ -236,14 +245,52 @@ class MainActivity : AppCompatActivity() {
 
     private fun tryToSetTune(curr: TuneModel?, next: TuneModel?, freq: Float): Boolean {
         if (curr!!.exactFrequency > freq && next == null) {
+            val max = curr.exactFrequency -  20 // random value
+            val stop = curr.exactFrequency - freq
+            val percent = stop * 0.01/max
+            var angle = percent * 90/0.01
+
+            if (angle < 90) {
+                angle = 0.0
+            }
+            rotate(-90 - angle.toFloat())
+
             return selectTune(curr)
         }
 
         if (curr != null && next != null && curr.exactFrequency < freq && next.exactFrequency > freq) {
             val diff = abs(next.exactFrequency - curr.exactFrequency) / 2;
             if ((next.exactFrequency - freq) > diff) {
+            //    __
+            //  __||__
+            //  |  / |
+
+                // explanation:
+                // first we need to know radius - to get it we need to know how far is next and current tone frequency
+                // now we need to have the same relation for frequency from microphone
+                // then we need to get % of it
+                // max - 100%
+                // stop - x%
+                // when we know how many percent we want to move arrow we need to multiply it by 90 (degree) and get percent value - how many degree it should move
+                val max = next.exactFrequency - curr.exactFrequency
+                val stop = freq - curr.exactFrequency
+                val percent = stop * 0.01/max
+                val angle = percent * 90/0.01
+
+                rotate(angle.toFloat())
+
                 return selectTune(curr)
             } else {
+                //    __
+                //  __||__
+                //  | \  |
+                val max = next.exactFrequency - curr.exactFrequency
+                val stop = curr.exactFrequency - freq
+                val percent = stop * 0.01/max
+                val angle = percent * 90/0.01
+
+                rotate(-90 - angle.toFloat())
+
                 return selectTune(next)
             }
         }
