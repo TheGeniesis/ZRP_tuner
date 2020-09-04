@@ -221,15 +221,14 @@ class MainActivity : AppCompatActivity() {
                     return
                 }
 
+                //check if it's higher than the highest tune
                 if (next != null) {
-                    val max = next.exactFrequency + 90
-                    val stop = freq - next.exactFrequency
-                    val percent = stop * 0.01/max
-                    var angle = percent * 90/0.01
+                    var diffHz = freq - next.exactFrequency
 
-                    if (angle > 90) {
-                        angle = 90.0
+                    if (diffHz > 10.0) {
+                        diffHz = 10.0
                     }
+                    val angle = diffHz * 10.0
 
                     rotate(angle.toFloat())
 
@@ -244,54 +243,83 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun tryToSetTune(curr: TuneModel?, next: TuneModel?, freq: Float): Boolean {
-        if (curr!!.exactFrequency > freq && next == null) {
-            val max = curr.exactFrequency -  20 // random value
-            val stop = curr.exactFrequency - freq
-            val percent = stop * 0.01/max
-            var angle = percent * 90/0.01
+        //check if it's lower than the lowest tune
+        if (curr!!.exactFrequency >= freq && next == null) {
+            var diffHz =  curr.exactFrequency - freq
 
-            if (angle < 90) {
-                angle = 0.0
+            // max for arrow is 90 degree, we don't want to move it more
+            if (diffHz > 10.0) {
+                diffHz = 10.0
             }
-            rotate(-90 - angle.toFloat())
+
+            // 10 is for better arrow angle, -1 to move arrow to left side
+            val angle = diffHz * 10 * -1
+
+            rotate(angle.toFloat())
 
             return selectTune(curr)
         }
 
-        if (curr != null && next != null && curr.exactFrequency < freq && next.exactFrequency > freq) {
+        if (curr != null && next != null && curr.exactFrequency <= freq && next.exactFrequency >= freq) {
             val diff = abs(next.exactFrequency - curr.exactFrequency) / 2;
-            if ((next.exactFrequency - freq) > diff) {
+
+            //D = 74
+            // G = 98
+            // curr 74
+            // next 97
+            //E/diff: 12.29
+            //E/freq: 77.07661
+            //E/nex: 20.92339324951172
+            //E/rotate: 100.0
+            // D+
+
+            //(77 - 74) > 12.29 is not true so we know that we should show current and have arrow on right side
+            if ((freq - curr.exactFrequency) >= diff) {
             //    __
             //  __||__
-            //  |  / |
+            //  | \  |
 
-                // explanation:
-                // first we need to know radius - to get it we need to know how far is next and current tone frequency
-                // now we need to have the same relation for frequency from microphone
-                // then we need to get % of it
-                // max - 100%
-                // stop - x%
-                // when we know how many percent we want to move arrow we need to multiply it by 90 (degree) and get percent value - how many degree it should move
-                val max = next.exactFrequency - curr.exactFrequency
-                val stop = freq - curr.exactFrequency
-                val percent = stop * 0.01/max
-                val angle = percent * 90/0.01
+                // curr D
+                // next G
+                // closer to G
+                // Show G
+                // arrow to left
+
+                var diffHz =  next.exactFrequency - freq
+
+                // max for arrow is 90 degree, we don't want to move it more
+                if (diffHz > 10.0) {
+                    diffHz = 10.0
+                }
+
+                // 10 is for better arrow angle, -1 to move arrow to left side
+                val angle = diffHz * 10 * -1
+
+                rotate(angle.toFloat())
+
+                return selectTune(next)
+            } else {
+
+                //    __
+                //  __||__
+                //  | /  |
+
+                // curr D
+                // next G
+                // closer to D
+                // Show D
+                // arrow to right
+
+                var diffHz = freq - curr.exactFrequency
+
+                if (diffHz > 10.0) {
+                    diffHz = 10.0
+                }
+                val angle = diffHz * 10.0
 
                 rotate(angle.toFloat())
 
                 return selectTune(curr)
-            } else {
-                //    __
-                //  __||__
-                //  | \  |
-                val max = next.exactFrequency - curr.exactFrequency
-                val stop = curr.exactFrequency - freq
-                val percent = stop * 0.01/max
-                val angle = percent * 90/0.01
-
-                rotate(-90 - angle.toFloat())
-
-                return selectTune(next)
             }
         }
 
