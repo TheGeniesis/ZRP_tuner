@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddEditActivity"></activity>
+        <activity android:name=".AddEditActivity"
+        android:windowSoftInputMode="adjustPan|adjustResize"
+            >
+        </activity>
         <activity android:name=".SelectElement" />
         <activity android:name=".TuneList" />
         <activity android:name=".MainActivity">

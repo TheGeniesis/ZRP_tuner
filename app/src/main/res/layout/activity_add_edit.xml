@@ -9,88 +9,63 @@
 
     <TextView
         android:id="@+id/instrument_id_label"
-        android:layout_width="77dp"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="25dp"
         android:layout_alignParentStart="true"
 
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="130dp"
-        android:layout_marginEnd="323dp"
-        android:layout_marginRight="323dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="134dp"
+        android:layout_marginEnd="286dp"
         android:text="Instrument"
-        android:textColor="#FFEBE6" />
+        android:textColor="#FFEBE6"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/note"
         android:layout_width="77dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="185dp"
-        android:layout_marginEnd="324dp"
-        android:layout_marginRight="324dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="194dp"
+        android:layout_marginEnd="286dp"
         android:text="Note"
-        android:textColor="#FFEBE6" />
+        android:textColor="#FFEBE6"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/tuning_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="7dp"
-        android:layout_marginLeft="61dp"
-        android:layout_marginTop="74dp"
-        android:autofillHints=""
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="-2dp"
         android:backgroundTint="#FFEBE6"
         android:ems="10"
+        android:gravity="center_horizontal"
         android:hint="Enter tuning name"
         android:inputType="textShortMessage"
         android:textColor="#FFEBE6"
-        android:textColorHint="#FFEBE6" />
-
-    <TextView
-        android:id="@+id/tuning_name_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="7dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="323dp"
-        android:layout_marginRight="323dp"
-        android:text="Tuning name"
-        android:textColor="#FFEBE6" />
+        android:textColorHint="#FFEBE6"
+        android:textSize="20sp"
+        />
 
     <Button
         android:id="@+id/save_changes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="289dp"
-        android:layout_marginLeft="289dp"
-        android:layout_marginTop="450dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginRight="34dp"
-        android:layout_marginBottom="109dp"
+        android:layout_marginStart="290dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="90dp"
         android:text="Confirm" />
 
     <Button
@@ -98,70 +73,58 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="380dp"
         android:layout_marginEnd="290dp"
-        android:layout_marginRight="290dp"
-        android:layout_marginBottom="110dp"
+        android:layout_marginBottom="90dp"
         android:text="Add" />
 
     <Spinner
         android:id="@+id/add_note_spinner"
-        android:layout_width="191dp"
+        android:layout_width="190dp"
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginTop="205dp"
-        android:layout_marginEnd="214dp"
-        android:backgroundTint="#FFEBE6" />
+        android:layout_marginStart="197dp"
+        android:layout_marginTop="194dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="#FFEBE6"
+        android:textAlignment="center" />
 
     <ListView
         android:id="@+id/selected_tunings_list"
         android:layout_width="match_parent"
-        android:layout_height="340dp"
+        android:layout_height="335dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="-3dp"
-        android:layout_marginLeft="-3dp"
-        android:layout_marginTop="206dp"
-        android:layout_marginBottom="145dp" />
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="170dp"
+        android:gravity="center"/>
 
     <Button
         android:id="@+id/go_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="41dp"
-        android:layout_marginLeft="41dp"
         android:layout_marginTop="437dp"
         android:layout_marginEnd="161dp"
-        android:layout_marginRight="161dp"
         android:layout_marginBottom="20dp"
         android:text="Done" />
 
     <Spinner
         android:id="@+id/instrument_id"
-        android:layout_width="191dp"
+        android:layout_width="190dp"
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="152dp"
-        android:layout_marginEnd="212dp"
+        android:layout_marginStart="197dp"
+        android:layout_marginTop="134dp"
+        android:layout_marginEnd="15dp"
         android:backgroundTint="#FFEBE6"
-        android:textAlignment="textStart"
-        />
+        android:textAlignment="center" />
 </RelativeLayout>
