@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background = "#1D2540"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1D2540"
     tools:context=".AddEditActivity">
+
+
+    <Button
+        android:id="@+id/save_changes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="48dp"
+        android:text="Confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selected_tunings_list" />
 
     <EditText
         android:id="@+id/tuning_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginTop="30dp"
+        android:autofillHints=""
         android:backgroundTint="#FFEBE6"
         android:ems="10"
         android:gravity="center_horizontal"
@@ -24,19 +33,11 @@
         android:inputType="textShortMessage"
         android:textColor="#FFEBE6"
         android:textColorHint="#FFEBE6"
-        android:textSize="20sp" />
-
-    <Button
-        android:id="@+id/save_changes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="290dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="90dp"
-        android:text="Confirm" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <Button
         android:id="@+id/add_note_action"
@@ -45,10 +46,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="290dp"
-        android:layout_marginBottom="90dp"
-        android:text="Add" />
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="15dp"
+        android:text="Add"
+        app:layout_constraintEnd_toStartOf="@+id/save_changes"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selected_tunings_list" />
 
     <ListView
         android:id="@+id/selected_tunings_list"
@@ -56,9 +60,12 @@
         android:layout_height="280dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="170dp"
-        android:gravity="center"/>
+        android:layout_marginTop="196dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tuning_name" />
 
     <Button
         android:id="@+id/go_back"
@@ -66,11 +73,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="437dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="20dp"
-        android:text="BACK" />
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="91dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="32dp"
+        android:text="BACK"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/save_changes"
+        app:layout_constraintStart_toEndOf="@+id/add_note_action"
+        app:layout_constraintTop_toBottomOf="@+id/selected_tunings_list" />
 
     <Spinner
         android:id="@+id/instrument_id"
@@ -79,26 +90,33 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="197dp"
-        android:layout_marginTop="184dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#FFEBE6"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/add_note_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tuning_name" />
 
     <TextView
         android:id="@+id/instrument_id_label"
-        android:layout_width="90dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
 
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="184dp"
-        android:layout_marginEnd="286dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="56dp"
         android:text="Instrument"
         android:textColor="#FFEBE6"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/instrument_id"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tuning_name" />
 
     <Spinner
         android:id="@+id/add_note_spinner"
@@ -107,36 +125,46 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="197dp"
-        android:layout_marginTop="244dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="#FFEBE6"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/selected_tunings_list"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/note"
-        android:layout_width="77dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="244dp"
-        android:layout_marginEnd="286dp"
-        android:text="Note"
-        android:textColor="#FFEBE6"
-        android:textSize="18sp" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="69dp"
+        android:text="Note"
+        android:textColor="#FFEBE6"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/add_note_spinner"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instrument_id_label" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="17dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/tuning_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/custom_tuning_logo" />
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
