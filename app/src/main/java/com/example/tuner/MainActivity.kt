@@ -4,9 +4,12 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.animation.RotateAnimation
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,21 +18,23 @@ import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
 import kotlin.math.abs
-import android.graphics.Matrix
+
 
 class MainActivity : AppCompatActivity() {
 
 
-    private var list : TunerListView? = null
+    private var list: TunerListView? = null
     private var mAudioProcessor: AudioProcessor? = null
     private val mExecutor =
         Executors.newSingleThreadExecutor()
     private val MY_PERMISSIONS_RECORD_AUDIO = 1
+    lateinit var pointer: ImageView
+    var deegreFrom = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        pointer = findViewById<ImageView>(R.id.imageView14) as ImageView
         // for first setup we need to create some basic data
         DatabaseFixture().createBasicDataInDB(this)
 
@@ -41,6 +46,22 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, TuneList::class.java)
             startActivity(intent)
         }
+    }
+
+    fun rotate(angle: Float) {
+        val rotateImage = RotateAnimation(
+            deegreFrom, angle,
+            RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+            RotateAnimation.RELATIVE_TO_SELF, 1f
+        )
+
+        rotateImage.startOffset = 0
+        rotateImage.duration = 500
+        rotateImage.fillAfter = true
+        rotateImage.setInterpolator(this, android.R.anim.decelerate_interpolator)
+
+        pointer.startAnimation(rotateImage)
+        deegreFrom = angle
     }
 
     fun setFrequencyValue(value: String) {
@@ -60,12 +81,11 @@ class MainActivity : AppCompatActivity() {
                 val tuning = DbBasicTunerHandler(context).getCurrentTuning() ?: return
                 var curr: TuneModel? = null
                 var next: TuneModel? = null
-
                 if (tuning.tune1 !== null) {
                     curr = tuneResult.find { it.id == tuning.tune1 }
                 }
 
-                if (tryToSetTune(curr, next, freq))  {
+                if (tryToSetTune(curr, next, freq)) {
                     return
                 }
 
@@ -77,7 +97,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                if (tryToSetTune(curr, next, freq))  {
+                if (tryToSetTune(curr, next, freq)) {
                     return
                 }
 
@@ -92,7 +112,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                if (tryToSetTune(curr, next, freq))  {
+                if (tryToSetTune(curr, next, freq)) {
                     return
                 }
 
@@ -201,7 +221,17 @@ class MainActivity : AppCompatActivity() {
                     return
                 }
 
+                //check if it's higher than the highest tune
                 if (next != null) {
+                    var diffHz = freq - next.exactFrequency
+
+                    if (diffHz > 10.0) {
+                        diffHz = 10.0
+                    }
+                    val angle = diffHz * 10.0
+
+                    rotate(angle.toFloat())
+
                     selectTune(next)
                     return
                 }
@@ -212,36 +242,142 @@ class MainActivity : AppCompatActivity() {
         mExecutor.execute(mAudioProcessor)
     }
 
-    private fun tryToSetTune(curr: TuneModel?, next: TuneModel?, freq: Float): Boolean
-    {
-        if (curr!!.exactFrequency > freq && next == null) {
+    private fun tryToSetTune(curr: TuneModel?, next: TuneModel?, freq: Float): Boolean {
+        //check if it's lower than the lowest tune
+        if (curr!!.exactFrequency >= freq && next == null) {
+            var diffHz =  curr.exactFrequency - freq
+
+            // max for arrow is 90 degree, we don't want to move it more
+            if (diffHz > 10.0) {
+                diffHz = 10.0
+            }
+
+            // 10 is for better arrow angle, -1 to move arrow to left side
+            val angle = diffHz * 10 * -1
+
+            rotate(angle.toFloat())
+
             return selectTune(curr)
         }
 
-        if (curr != null && next != null && curr.exactFrequency < freq && next.exactFrequency > freq) {
+        if (curr != null && next != null && curr.exactFrequency <= freq && next.exactFrequency >= freq) {
             val diff = abs(next.exactFrequency - curr.exactFrequency) / 2;
-            if ((next.exactFrequency - freq) > diff) {
-                return selectTune(curr)
-            } else {
+
+            //D = 74
+            // G = 98
+            // curr 74
+            // next 97
+            //E/diff: 12.29
+            //E/freq: 77.07661
+            //E/nex: 20.92339324951172
+            //E/rotate: 100.0
+            // D+
+
+            //(77 - 74) > 12.29 is not true so we know that we should show current and have arrow on right side
+            if ((freq - curr.exactFrequency) >= diff) {
+            //    __
+            //  __||__
+            //  | \  |
+
+                // curr D
+                // next G
+                // closer to G
+                // Show G
+                // arrow to left
+
+                var diffHz =  next.exactFrequency - freq
+
+                // max for arrow is 90 degree, we don't want to move it more
+                if (diffHz > 10.0) {
+                    diffHz = 10.0
+                }
+
+                // 10 is for better arrow angle, -1 to move arrow to left side
+                val angle = diffHz * 10 * -1
+
+                rotate(angle.toFloat())
+
                 return selectTune(next)
+            } else {
+
+                //    __
+                //  __||__
+                //  | /  |
+
+                // curr D
+                // next G
+                // closer to D
+                // Show D
+                // arrow to right
+
+                var diffHz = freq - curr.exactFrequency
+
+                if (diffHz > 10.0) {
+                    diffHz = 10.0
+                }
+                val angle = diffHz * 10.0
+
+                rotate(angle.toFloat())
+
+                return selectTune(curr)
             }
         }
 
         return false
     }
 
-    private fun resetTuneColor () {
+    private fun resetTuneColor() {
         val notSelectedColor = "black"
-        findViewById<TextView>(R.id.tune_block_tune_1).setTextColor(Color.parseColor(notSelectedColor))
-        findViewById<TextView>(R.id.tune_block_tune_2).setTextColor(Color.parseColor(notSelectedColor))
-        findViewById<TextView>(R.id.tune_block_tune_3).setTextColor(Color.parseColor(notSelectedColor))
-        findViewById<TextView>(R.id.tune_block_tune_4).setTextColor(Color.parseColor(notSelectedColor))
-        findViewById<TextView>(R.id.tune_block_tune_5).setTextColor(Color.parseColor(notSelectedColor))
-        findViewById<TextView>(R.id.tune_block_tune_6).setTextColor(Color.parseColor(notSelectedColor))
-        findViewById<TextView>(R.id.tune_block_tune_7).setTextColor(Color.parseColor(notSelectedColor))
-        findViewById<TextView>(R.id.tune_block_tune_8).setTextColor(Color.parseColor(notSelectedColor))
-        findViewById<TextView>(R.id.tune_block_tune_9).setTextColor(Color.parseColor(notSelectedColor))
-        findViewById<TextView>(R.id.tune_block_tune_10).setTextColor(Color.parseColor(notSelectedColor))
+        findViewById<TextView>(R.id.tune_block_tune_1).setTextColor(
+            Color.parseColor(
+                notSelectedColor
+            )
+        )
+        findViewById<TextView>(R.id.tune_block_tune_2).setTextColor(
+            Color.parseColor(
+                notSelectedColor
+            )
+        )
+        findViewById<TextView>(R.id.tune_block_tune_3).setTextColor(
+            Color.parseColor(
+                notSelectedColor
+            )
+        )
+        findViewById<TextView>(R.id.tune_block_tune_4).setTextColor(
+            Color.parseColor(
+                notSelectedColor
+            )
+        )
+        findViewById<TextView>(R.id.tune_block_tune_5).setTextColor(
+            Color.parseColor(
+                notSelectedColor
+            )
+        )
+        findViewById<TextView>(R.id.tune_block_tune_6).setTextColor(
+            Color.parseColor(
+                notSelectedColor
+            )
+        )
+        findViewById<TextView>(R.id.tune_block_tune_7).setTextColor(
+            Color.parseColor(
+                notSelectedColor
+            )
+        )
+        findViewById<TextView>(R.id.tune_block_tune_8).setTextColor(
+            Color.parseColor(
+                notSelectedColor
+            )
+        )
+        findViewById<TextView>(R.id.tune_block_tune_9).setTextColor(
+            Color.parseColor(
+                notSelectedColor
+            )
+        )
+        findViewById<TextView>(R.id.tune_block_tune_10).setTextColor(
+            Color.parseColor(
+                notSelectedColor
+            )
+        )
     }
 
     private fun selectTune(curr: TuneModel): Boolean {
@@ -256,18 +392,37 @@ class MainActivity : AppCompatActivity() {
         return false
     }
 
-    private fun getFrequencyTune(curr: TuneModel): Int?
-    {
-        if (curr.name == list!!.tune1 ) { return R.id.tune_block_tune_1}
-        if (curr.name == list!!.tune2 ) { return R.id.tune_block_tune_2}
-        if (curr.name == list!!.tune3 ) { return R.id.tune_block_tune_3}
-        if (curr.name == list!!.tune4 ) { return R.id.tune_block_tune_4}
-        if (curr.name == list!!.tune5 ) { return R.id.tune_block_tune_5}
-        if (curr.name == list!!.tune6 ) { return R.id.tune_block_tune_6}
-        if (curr.name == list!!.tune7 ) { return R.id.tune_block_tune_7}
-        if (curr.name == list!!.tune8 ) { return R.id.tune_block_tune_8}
-        if (curr.name == list!!.tune9 ) { return R.id.tune_block_tune_9}
-        if (curr.name == list!!.tune10 ) { return R.id.tune_block_tune_10}
+    private fun getFrequencyTune(curr: TuneModel): Int? {
+        if (curr.name == list!!.tune1) {
+            return R.id.tune_block_tune_1
+        }
+        if (curr.name == list!!.tune2) {
+            return R.id.tune_block_tune_2
+        }
+        if (curr.name == list!!.tune3) {
+            return R.id.tune_block_tune_3
+        }
+        if (curr.name == list!!.tune4) {
+            return R.id.tune_block_tune_4
+        }
+        if (curr.name == list!!.tune5) {
+            return R.id.tune_block_tune_5
+        }
+        if (curr.name == list!!.tune6) {
+            return R.id.tune_block_tune_6
+        }
+        if (curr.name == list!!.tune7) {
+            return R.id.tune_block_tune_7
+        }
+        if (curr.name == list!!.tune8) {
+            return R.id.tune_block_tune_8
+        }
+        if (curr.name == list!!.tune9) {
+            return R.id.tune_block_tune_9
+        }
+        if (curr.name == list!!.tune10) {
+            return R.id.tune_block_tune_10
+        }
 
         return null
     }
@@ -312,7 +467,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Handling request permission callback
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         when (requestCode) {
             MY_PERMISSIONS_RECORD_AUDIO -> {
                 if (grantResults.size > 0
@@ -331,8 +490,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getList(context: Context): TunerListView?
-    {
+    private fun getList(context: Context): TunerListView? {
         val tuneResult = DbTuneHandler(context).getAll()
         val tuning = DbBasicTunerHandler(context).getCurrentTuning()
 
@@ -359,57 +517,56 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun setTuneTexts(list: TunerListView?)
-    {
+    private fun setTuneTexts(list: TunerListView?) {
 
         val tune1 = findViewById<TextView>(R.id.tune_block_tune_1)
         if (list != null) {
-            tune1.text  = list.tune1
+            tune1.text = list.tune1
         }
 
         val tune2 = findViewById<TextView>(R.id.tune_block_tune_2)
         if (list != null) {
-            tune2.text  = list.tune2
+            tune2.text = list.tune2
         }
 
         val tune3 = findViewById<TextView>(R.id.tune_block_tune_3)
         if (list != null) {
-            tune3.text  = list.tune3
+            tune3.text = list.tune3
         }
 
         val tune4 = findViewById<TextView>(R.id.tune_block_tune_4)
         if (list != null) {
-            tune4.text  = list.tune4
+            tune4.text = list.tune4
         }
 
         val tune5 = findViewById<TextView>(R.id.tune_block_tune_5)
         if (list != null) {
-            tune5.text  = list.tune5
+            tune5.text = list.tune5
         }
 
         val tune6 = findViewById<TextView>(R.id.tune_block_tune_6)
         if (list != null) {
-            tune6.text  = list.tune6
+            tune6.text = list.tune6
         }
 
         val tune7 = findViewById<TextView>(R.id.tune_block_tune_7)
         if (list != null) {
-            tune7.text  = list.tune7
+            tune7.text = list.tune7
         }
 
         val tune8 = findViewById<TextView>(R.id.tune_block_tune_8)
         if (list != null) {
-            tune8.text  = list.tune8
+            tune8.text = list.tune8
         }
 
         val tune9 = findViewById<TextView>(R.id.tune_block_tune_9)
         if (list != null) {
-            tune9.text  = list.tune9
+            tune9.text = list.tune9
         }
 
         val tune10 = findViewById<TextView>(R.id.tune_block_tune_10)
         if (list != null) {
-            tune10.text  = list.tune10
+            tune10.text = list.tune10
         }
 
     }
