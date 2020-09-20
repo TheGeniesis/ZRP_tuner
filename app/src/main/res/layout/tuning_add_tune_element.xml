@@ -29,14 +29,14 @@
 
     <TextView
         android:id="@+id/tuning_add_tune_frequency"
-        android:layout_width="50dp"
+        android:layout_width="69dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="122dp"
-        android:layout_marginEnd="239dp"
         android:layout_marginTop="25dp"
+        android:layout_marginEnd="220dp"
         android:textColor="#FFEBE6" />
 
     <ImageView
