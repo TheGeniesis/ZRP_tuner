@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 
 class TuneListElementAdapter(
@@ -73,6 +74,11 @@ class TuneListElementAdapter(
         if (!dataSource[position].customTuning()) {
             deleteButton.visibility = View.INVISIBLE
             editButton.visibility = View.INVISIBLE
+            val deleteButtonView = rowView.findViewById(R.id.imageView3) as ImageView
+            val editButtonView = rowView.findViewById(R.id.imageView2) as ImageView
+
+            editButtonView.visibility = View.INVISIBLE
+            deleteButtonView.visibility = View.INVISIBLE
         }
 
         val tuner = getItem(position) as TunerListView
